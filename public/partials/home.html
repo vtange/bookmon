@@ -2,7 +2,7 @@
 	<h1>Let's Play Bookmon!</h1>
 	<div class="vert-menu">
 		<a href="/newGame"><div class="btn-wide btn btn-primary">New Game</div></a>
-		<a href="/bookRanch" data-ng-if="!userHasFile()"><div class="btn-wide btn btn-primary disabled">Continue Game</div></a>
+		<div data-ng-if="!userHasFile()" class="btn-wide btn btn-primary disabled">Continue Game</div>
 		<a href="/bookRanch" data-ng-if="userHasFile()"><div class="btn-wide btn btn-primary">Continue Game</div></a>
 	</div>
 </div>
