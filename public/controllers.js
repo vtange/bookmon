@@ -3,11 +3,9 @@
 /*-------------*/
 angular.module('bookmonGame').controller('autoLogger',['$scope', 'ActiveUser',function ($scope, ActiveUser) {
 	
-	
-	
 	//used to transfer server data to client
 	$scope.init = function(package) {
-		$scope.activeUser = package[0];
+		ActiveUser.user = package[0];
 	};
 
 }]);
@@ -17,6 +15,9 @@ angular.module('bookmonGame').controller('autoLogger',['$scope', 'ActiveUser',fu
 /*-------------*/
 angular.module('bookmonGame').controller('startMenu',['$scope', '$location', 'ActiveUser',function ($scope, $location, ActiveUser) {
 
-
+	//used to transfer server data to client
+	$scope.checkUser = function() {
+		console.log(ActiveUser.user);
+	};
 
 }]);

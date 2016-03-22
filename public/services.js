@@ -2,20 +2,10 @@ angular.module('bookmonGame').factory('ActiveUser',['$q', '$http',function ($q, 
 /*----------*/
 /* USER STATE    */
 /*----------*/
-    // initiate user variable (activeUser)
-    var user = false;
-
-    function isLoggedIn() {
-        if(user) {
-          return true;
-        } else {
-          return false;
-        }
-    };
-	
+    var serviceObj = {
+		user: null
+	};
 	// return available functions for use in controllers
-    return ({
-      isLoggedIn: isLoggedIn
-    });
+    return serviceObj;
 	
 }]);

@@ -10,7 +10,7 @@ module.exports = function(app) {
         res.render('index.ejs', {
             title : app.title, // get the title
             user : req.user, // get the user out of session and pass to template
-			packagedUser : JSON.stringify([req.user])
+			packagedUser : JSON.stringify([req.user]) //send user info to angular
         }); // load the index.ejs file
     });
 
