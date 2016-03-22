@@ -25,8 +25,12 @@ angular.module('bookmonGame').controller('startMenuController',['$scope', '$loca
 /*New Game Create    */
 /*-------------*/
 angular.module('bookmonGame').controller('newGameController',['$scope', '$location', 'ActiveUser',function ($scope, $location, ActiveUser) {
-
-
+	//object for ng-model
+	$scope.newFile = {};
+	//assign ^ to user in MongoDB and start the game
+	$scope.startGame = function() {
+		console.log($scope.newFile);
+	};
 
 }]);
 

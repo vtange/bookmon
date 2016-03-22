@@ -1,1 +1,18 @@
-<div data-ng-controller="newGameController">This is New Game Section</div>
+<div data-ng-controller="newGameController">
+	<h1>New Game</h1>
+	<form id="form" data-ng-submit="startGame()">
+		<div id="inputs">
+			<div class="form-group">
+				<label>Your Name</label>
+				<input type="text" name="name" class="form-control" data-ng-model="newFile.name">
+			</div>
+			<div class="form-group">
+				<label>Book Ranch Name</label>
+				<input type="text" name="ranchname" class="form-control" data-ng-model="newFile.ranch">
+			</div>
+		</div>
+		<button type="submit" class="btn btn-lg btn-primary btn-block">Start</button>
+	</form>
+	<h3>Or..</h3>
+	<a href="/"><div class="btn btn-lg btn-danger btn-block">Back to Title</div></a>
+</div>
