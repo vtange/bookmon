@@ -14,7 +14,7 @@ module.exports = function(app) {
         }); // load the index.ejs file
     });
     // =====================================
-    // GAME PAGE  ========
+    // GAME PAGE (ENABLES REFRESH IN GAME PAGES) ========
     // =====================================
     app.get('/game/*', function(req, res) {
 		var filename = req.originalUrl.replace("/game/","");
