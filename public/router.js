@@ -6,12 +6,11 @@ myApp.config(function ($routeProvider, $locationProvider) {        //Determine w
     .when('/', {templateUrl: 'partials/home.html'})//when "/", send home html (controller within home)
     .when('/newGame', {
       templateUrl: 'partials/newGame.html',
-      controller: 'newGameController',
-      access: {restricted: false}
+      controller: 'newGameController'
     })
     .when('/bookRanch', {
       templateUrl: 'partials/bookRanch.html',
-      controller: 'bookRanchController',
-      access: {restricted: false}
+      controller: 'bookRanchController'
     })
+    .otherwise({redirectTo: '/'});
 });
