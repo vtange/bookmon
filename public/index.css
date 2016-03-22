@@ -29,6 +29,10 @@ body:after{
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.vert-menu{
+  display: flex;
+  flex-direction: column;
+}
 /* BASICS ^ */
 /* RESET */
 /* HEADER */
