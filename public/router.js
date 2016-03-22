@@ -4,11 +4,11 @@ myApp.config(function ($routeProvider, $locationProvider) {        //Determine w
     $locationProvider.html5Mode(true);
 	$routeProvider
     .when('/', {templateUrl: 'partials/home.html'})//when "/", send home html (controller within home)
-    .when('/newGame', {
+    .when('/game/newGame', {
       templateUrl: 'partials/newGame.html',
       controller: 'newGameController'
     })
-    .when('/bookRanch', {
+    .when('/game/bookRanch', {
       templateUrl: 'partials/bookRanch.html',
       controller: 'bookRanchController'
     })
