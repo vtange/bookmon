@@ -14,9 +14,9 @@ angular.module('bookmonGame').controller('autoLogger',['$scope', 'ActiveUser',fu
 /*Start Screen    */
 /*-------------*/
 angular.module('bookmonGame').controller('startMenuController',['$scope', '$location', 'ActiveUser',function ($scope, $location, ActiveUser) {
-
-	$scope.checkUser = function() {
-		console.log(ActiveUser.user);
+	//checks if user has a file. grey out the continue button if no file.
+	$scope.userHasFile = function() {
+		return ActiveUser.user.file.name;
 	};
 
 }]);
