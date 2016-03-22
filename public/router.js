@@ -3,15 +3,15 @@ var myApp = angular.module('bookmonGame', ['ngRoute']);
 myApp.config(function ($routeProvider) {        //Determine what page to be shown and what controller
   $routeProvider
     .when('/', {templateUrl: 'partials/home.html'})//when "/", send home html (controller within home)
-    .when('/newGame', {
+    .when('/game/newGame', {
       templateUrl: 'partials/newGame.html',
       controller: 'newGameController',
-      access: {restricted: false}
+      access: {restricted: true}
     })
-    .when('/bookRanch', {
+    .when('/game/bookRanch', {
       templateUrl: 'partials/bookRanch.html',
       controller: 'bookRanchController',
-      access: {restricted: false}
+      access: {restricted: true}
     })
   
     .otherwise({redirectTo: '/login'});
