@@ -4,6 +4,11 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 var gravatar = require('gravatar');
 
+var tradeSchema = mongoose.Schema({
+	tradingOut		: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
+	for				: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' }
+});
+
 // define the schema for our user model
 var userSchema = mongoose.Schema({
 
@@ -14,7 +19,13 @@ var userSchema = mongoose.Schema({
 		avatarURL	 : String,
 		resetPasswordToken: String,
 		resetPasswordExpires: Date
-    }
+    },
+	file			 : {
+		name		 : String,
+		ranch		 : String,
+		books		 : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
+		pendingTrades: [tradeSchema]
+	}
 
 });
 
