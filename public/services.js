@@ -1,18 +1,9 @@
-angular.module('bookmonGame').factory('AuthService',['$q', '$http',function ($q, $http) {
+angular.module('bookmonGame').factory('ActiveUser',['$q', '$http',function ($q, $http) {
 /*----------*/
 /* USER STATE    */
 /*----------*/
     // initiate user variable (activeUser)
     var user = false;
-
-    // return available functions for use in controllers
-    return ({
-      isLoggedIn: isLoggedIn,
-      getUserStatus: getUserStatus,
-      login: login,
-      logout: logout,
-      register: register
-    });
 
     function isLoggedIn() {
         if(user) {
@@ -20,92 +11,11 @@ angular.module('bookmonGame').factory('AuthService',['$q', '$http',function ($q,
         } else {
           return false;
         }
-    }
-
-    function getUserStatus() {
-      return user;
-    }
-/*----------*/
-/* LOGIN PROCESS   */
-/*----------*/
-    function login(username, password) {
-
-      // create a new instance of deferred
-      var deferred = $q.defer();
-
-      // send a post request to the server
-      $http.post('/user/login', {username: username, password: password})
-        // handle success
-        .success(function (data, status) {
-          if(status === 200 && data.status){
-            user = true;
-            deferred.resolve();
-          } else {
-            user = false;
-            deferred.reject();
-          }
-        })
-        // handle error
-        .error(function (data) {
-          user = false;
-          deferred.reject();
-        });
-
-      // return promise object
-      return deferred.promise;
-
-    }
-/*----------*/
-/* LOGOUT PROCESS   */
-/*----------*/
-    function logout() {
-
-      // create a new instance of deferred
-      var deferred = $q.defer();
-
-      // send a get request to the server
-      $http.get('/user/logout')
-        // handle success
-        .success(function (data) {
-          user = false;
-          deferred.resolve();
-        })
-        // handle error
-        .error(function (data) {
-          user = false;
-          deferred.reject();
-        });
-
-      // return promise object
-      return deferred.promise;
-
-    }
-/*----------*/
-/* REGISTER PROCESS   */
-/*----------*/
-    function register(username, password) {
-
-      // create a new instance of deferred
-      var deferred = $q.defer();
-
-      // send a post request to the server
-      $http.post('/user/register', {username: username, password: password})
-        // handle success
-        .success(function (data, status) {
-          if(status === 200 && data.status){
-            deferred.resolve();
-          } else {
-            deferred.reject();
-          }
-        })
-        // handle error
-        .error(function (data) {
-          deferred.reject();
-        });
-
-      // return promise object
-      return deferred.promise;
-
-    }
-
+    };
+	
+	// return available functions for use in controllers
+    return ({
+      isLoggedIn: isLoggedIn
+    });
+	
 }]);

@@ -21,7 +21,7 @@
 	
     <% } else {%>
 	
-	<div data-ng-app="bookmonGame">
+	<div data-ng-app="bookmonGame" data-ng-controller="autoLogger" data-ng-init="package = <%= packagedUser %>;init(package)">
 	
 
     <div ng-view></div>
