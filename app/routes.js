@@ -30,5 +30,26 @@ module.exports = function(app) {
 			}); // load the index.ejs file
 		}
 	});
+	// =====================================
+    // NEW GAME (ENABLES REFRESH IN GAME PAGES) ========
+    // =====================================
+    app.post('/game/newGame', function(req, res) {
+		if(req.user){
+			var user = req.user;
+			user.file.name = req.body.name;
+			user.file.ranch = req.body.ranch;
+			user.save(function(err){
+				if(err)
+					throw err;
+				console.log('user got new game');
+				res.send(200);
+			});
+		}
+		else{
+			res.redirect('/');
+		}
+	});
+	
+	
 	
 };
