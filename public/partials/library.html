@@ -1,0 +1,35 @@
+
+<link rel="stylesheet" href="library.css"> <!-- load styles -->
+<div data-ng-controller="libraryController">
+	
+	<p>This is Library Section</p>
+	
+	<div>{{file}}</div>
+	
+	<div data-ng-if="noBooks()" id="intro">
+		<h2>You don't have a book yet? It's dangerous out there!</h2>
+		<h3>Here, pick a book to bring with you on your journey!</h3>
+		<div id="starter-book-list">
+			<div class="book-vertical" data-ng-repeat="book in starter-books">
+				<div>book.title</div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="book-list">
+		<div>
+		
+		
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</div>

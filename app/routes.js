@@ -37,7 +37,7 @@ module.exports = function(app) {
 		if(req.user){
 			var user = req.user;
 			user.file.name = req.body.name;
-			user.file.ranch = req.body.ranch;
+			user.file.library = req.body.library;
 			user.save(function(err){
 				if(err)
 					throw err;

@@ -8,9 +8,9 @@ myApp.config(function ($routeProvider, $locationProvider) {        //Determine w
       templateUrl: 'partials/newGame.html',
       controller: 'newGameController'
     })
-    .when('/game/bookRanch', {
-      templateUrl: 'partials/bookRanch.html',
-      controller: 'bookRanchController'
+    .when('/game/library', {
+      templateUrl: 'partials/library.html',
+      controller: 'libraryController'
     })
     .otherwise({redirectTo: '/'});
 });

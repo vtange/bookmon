@@ -22,7 +22,7 @@ var userSchema = mongoose.Schema({
     },
 	file			 : {
 		name		 : String,
-		ranch		 : String,
+		library		 : String,
 		books		 : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
 		pendingTrades: [tradeSchema]
 	}

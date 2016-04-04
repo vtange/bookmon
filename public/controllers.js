@@ -41,7 +41,9 @@ angular.module('bookmonGame').controller('newGameController',['$scope', '$http',
 /*-------------*/
 /*The Ranch - List of Bookmons    */
 /*-------------*/
-angular.module('bookmonGame').controller('bookRanchController',['$scope', '$window', 'ActiveUser',function ($scope, $window, ActiveUser) {
-
-
+angular.module('bookmonGame').controller('libraryController',['$scope', '$window', 'ActiveUser',function ($scope, $window, ActiveUser) {
+	$scope.file = ActiveUser.user.file;
+	$scope.noBooks = function(){
+		return $scope.file.books.length === 0;
+	}
 }]);
