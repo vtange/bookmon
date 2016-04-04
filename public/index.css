@@ -1,6 +1,9 @@
 *{
     box-sizing: border-box;/*reset page*/
 }
+a:hover{
+	text-decoration: none;
+}
 /* background image */
 body {
     margin: 0;/*reset page*/
@@ -51,7 +54,11 @@ body, .btn, #header > #group1 > a{
 .btn-default{
 	background-color:rgb(255,240,220);
 }
-.btn-default:hover{
+.btn-success{
+	background-color:rgb(240,255,220);
+}
+.btn-default:hover, .btn-success:hover{
+	color:inherit;
 	background-color:#fff;
 }
 

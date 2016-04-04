@@ -1,8 +1,8 @@
 <div class="vert-centered" data-ng-controller="startMenuController" data-ng-init="checkUser()">
 	<h1>Let's Play Bookmon!</h1>
 	<div class="vert-menu">
-		<a href="/game/newGame"><div class="btn btn-lg btn-primary btn-block">New Game</div></a>
-		<div data-ng-if="!userHasFile()" class="btn btn-lg btn-primary btn-block disabled">Continue Game</div>
-		<a href="/game/bookRanch" data-ng-if="userHasFile()"><div class="btn btn-lg btn-primary btn-block">Continue Game</div></a>
+		<a href="/game/newGame"><div class="btn btn-lg btn-default btn-block">New Game</div></a>
+		<div data-ng-if="!userHasFile()" class="btn btn-lg btn-default btn-block disabled">Continue Game</div>
+		<a href="/game/bookRanch" data-ng-if="userHasFile()"><div class="btn btn-lg btn-default btn-block">Continue Game</div></a>
 	</div>
 </div>
