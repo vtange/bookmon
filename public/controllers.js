@@ -30,7 +30,7 @@ angular.module('bookmonGame').controller('newGameController',['$scope', '$http',
 	//assign ^ to user in MongoDB and start the game
 	$scope.startGame = function() {
 		$http.post($window.location.href,$scope.newFile).success(function(data){
-			$window.location.href = '/game/bookRanch';
+			$window.location.href = '/game/library';
 		}).error(function(data){
 			console.error("Something wrong happened while making your new game.");
 		});
@@ -39,11 +39,14 @@ angular.module('bookmonGame').controller('newGameController',['$scope', '$http',
 }]);
 
 /*-------------*/
-/*The Ranch - List of Bookmons    */
+/*The Library - List of Bookmons    */
 /*-------------*/
 angular.module('bookmonGame').controller('libraryController',['$scope', '$window', 'ActiveUser',function ($scope, $window, ActiveUser) {
 	$scope.file = ActiveUser.user.file;
 	$scope.noBooks = function(){
 		return $scope.file.books.length === 0;
-	}
+	};
+	$scope.starterBooks = [
+		{mon:"Comic"},{mon:"Novel"},{mon:"Textbook"},
+	];
 }]);
