@@ -1,4 +1,4 @@
-var myApp = angular.module('bookmonGame', ['ngRoute']);
+var myApp = angular.module('bookmonGame', ['ngRoute', 'ngAlertify']);
 
 myApp.config(function ($routeProvider, $locationProvider) {        //Determine what page to be shown and what controller
     $locationProvider.html5Mode(true);
