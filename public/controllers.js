@@ -42,21 +42,23 @@ angular.module('bookmonGame').controller('newGameController',['$scope', '$http',
 /*The Library - List of Bookmons    */
 /*-------------*/
 angular.module('bookmonGame').controller('libraryController',['$scope', '$window', 'alertify', 'ActiveUser', 'BookStatsGenerator',function ($scope, $window, alertify, ActiveUser, BookStatsGenerator) {
-	$scope.file = ActiveUser.user.file;
+	/*---------------------------*/
+	/*no books - first time play */
+	/*---------------------------*/
 	$scope.noBooks = function(){
 		return $scope.file.books.length === 0;
 	};
 	$scope.starterBooks = [
-		{mon:"Comic"},{mon:"Light Novel"},{mon:"Textbook"},
+		{mon:"Comic"},{mon:"Novel"},{mon:"Textbook"},
 	];
 	$scope.getStats = BookStatsGenerator.getStats;
 	$scope.confirm = function(book){
-		alertify.okBtn("O's").cancelBtn("X's").confirm("Are you O's or X's?", function (ev) {
+		alertify.okBtn("Yes").cancelBtn("No").confirm("Are you sure you want to start as a "+book.mon+" library?", function (ev) {
 			  // The click event is in the
 			  // event variable, so you can use
 			  // it here.
 			  ev.preventDefault();
-			  alertify.success("Day 1: Your library opens with a stock of ");//Player is O
+			  alertify.success("Day 1: Your library opens with a stock of "+book.mon+"s.");//Player is O
 
 		}, function(ev) {
 
@@ -68,6 +70,11 @@ angular.module('bookmonGame').controller('libraryController',['$scope', '$window
 
 		});
 	};
+	
+	/*---------------------------*/
+	/*has books - regular play   */
+	/*---------------------------*/
+	$scope.file = ActiveUser.user.file;
 	
 	
 }]);
