@@ -11,8 +11,12 @@
 		<h3>Here, pick a book to bring with you on your journey!</h3>
 		<div id="starter-book-list">
 			<div class="book-vertical" data-ng-repeat="book in starterBooks">
-				<div>book.title</div>
-				<div></div>
+				<div>{{book.mon}}</div>
+				<div>weight: {{getStats(book).weight}}</div>
+				<div>magic: {{getStats(book).magic}}</div>
+				<div>knowledge: {{getStats(book).knowledge}}</div>
+				<div>story: {{getStats(book).story}}</div>
+				<div>speed: {{getStats(book).speed}}</div>
 			</div>
 		</div>
 	</div>

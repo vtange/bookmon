@@ -41,12 +41,13 @@ angular.module('bookmonGame').controller('newGameController',['$scope', '$http',
 /*-------------*/
 /*The Library - List of Bookmons    */
 /*-------------*/
-angular.module('bookmonGame').controller('libraryController',['$scope', '$window', 'ActiveUser',function ($scope, $window, ActiveUser) {
+angular.module('bookmonGame').controller('libraryController',['$scope', '$window', 'ActiveUser', 'BookStatsGenerator',function ($scope, $window, ActiveUser, BookStatsGenerator) {
 	$scope.file = ActiveUser.user.file;
 	$scope.noBooks = function(){
 		return $scope.file.books.length === 0;
 	};
 	$scope.starterBooks = [
-		{mon:"Comic"},{mon:"Novel"},{mon:"Textbook"},
+		{mon:"Comic"},{mon:"Light Novel"},{mon:"Textbook"},
 	];
+	$scope.getStats = BookStatsGenerator.getStats;
 }]);
