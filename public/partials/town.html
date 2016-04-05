@@ -3,15 +3,29 @@
 	<div id="click-guard" data-ng-show="atBldg()">
 		<div class="vert-centered bldg-interior repair-shop" data-ng-if="atRepair">
 			<a class="boxclose" data-ng-click="showRepair()"></a>
-			
+			<h1>Repair Shop</h1>
+			<div class="book-list">
+				<div class="book-horiz" data-ng-repeat="book in file.books">
+					<div class="book-img" data-ng-switch="book.mon">
+						<img data-ng-switch-when="Comic"	src="img/comic.png"/>
+						<img data-ng-switch-when="Novel"	src="img/book.png"/>
+						<img data-ng-switch-when="Textbook"	src="img/textbook.png"/>
+					</div>
+					<div class="book-name"><h3><span>Level {{book.level}}</span>  <span>{{book.mon}}</span></h3></div>
+					<div class="hp-bar-red"><div class="vert-centered hp-value">{{book.hp}}/{{book.maxhp}}</div><div class="hp-bar-green" data-ng-style="setHP(book.hp,book.maxhp)"></div></div>
+				</div>
+			</div>
 		</div>
 		<div class="vert-centered bldg-interior book-smith"  data-ng-if="atSmith">
 			<a class="boxclose" data-ng-click="showSmith()"></a>
-
+			<h1>Merger Bros. Press</h1>
+			<p><i>Welcome to the Merger Bros.!</i></p>
+			<p><i>Uhh, we're kinda busing moving into town right now, we'll be all set up real soon! Sorry for now!</i></p>
 		</div>
 		<div class="vert-centered bldg-interior book-store"  data-ng-if="atStore">
 			<a class="boxclose" data-ng-click="showStore()"></a>
-
+			<h1>Book Store</h1>
+			<p><i>The Book Store is currently closed for further renovation. Please come back later. Our business hours are...</i></p>
 		</div>
 	</div>
 	<div id="town-service-list" data-ng-style="blur()">
