@@ -1,10 +1,33 @@
-<link rel="stylesheet" href="town.css"> <!-- load styles -->
+<link rel="stylesheet" href="css/town.css"> <!-- load styles -->
 <div data-ng-controller="townController">
-	<div id="town-service-list">
-		<div class="town-bldg" id="repair-shop"></div>
-		<div class="town-bldg" id="book-smith"></div>
-		<div class="town-bldg" id="book-store"></div>
-		<a href="/game/trade"><div class="town-bldg" id="book-trade"></div></a><!--a place on its own-->
+	<div id="click-guard" data-ng-show="atBldg()">
+		<div class="vert-centered repair-shop" data-ng-if="atRepair">
+			
+		</div>
+		<div class="vert-centered book-smith"  data-ng-if="atSmith">
+			
+		</div>
+		<div class="vert-centered book-store"  data-ng-if="atStore">
+			
+		</div>
+	</div>
+	<div id="town-service-list" data-ng-style="blur()">
+		<div class="town-bldg repair-shop" data-ng-click="showRepair()">
+			<h3>Repair Shop</h3>
+			<p>Got books in need of repair? Send them here for a good fixer-upper.</p>
+		</div>
+		<div class="town-bldg book-smith" data-ng-click="showSmith()">
+			<h3>The Merger Press</h3>
+			<p>Upgrade your books and combine them! Create the ultimate book collection!</p>
+		</div>
+		<div class="town-bldg book-store" data-ng-click="showStore()">
+			<h3>Book Store</h3>
+			<p>Books for Sale! Our stock changes daily! You might find a rare one!</p>
+		</div>
+		<a href="/game/trade"><div class="town-bldg book-trade">
+			<h3>Harbour</h3>
+			<p>Trade books with libraries all over the world!</p>
+		</div></a><!--a place on its own-->
 	</div>
 	<div id="footer">
 		<div><h2><span>1,000</span></h2></div>

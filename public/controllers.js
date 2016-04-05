@@ -93,14 +93,45 @@ angular.module('bookmonGame').controller('townController',['$scope', '$http', '$
 	$scope.file = ActiveUser.user.file;
 	//book stats if needed
 	$scope.getStats = BookStatsGenerator.getStats;
-	
+
+	$scope.atBldg = function(){
+		return $scope.atRepair || $scope.atSmith || $scope.atStore;
+	};
+	console.log($scope.atBldg());
+	$scope.blur = function(){
+		if($scope.atBldg()){
+			return { "filter": "blur(5px)"};
+		}
+		return {};
+	};
 	/*---------------------------*/
 	/*	BOOK REPAIR				 */
 	/*---------------------------*/
+	$scope.atRepair = false;
+	$scope.showRepair = function(){
+		if($scope.atRepair){
+			$scope.atRepair = false;
+		}
+		$scope.atRepair = true;
+	};
 	/*---------------------------*/
 	/*	BOOK SMITH (COMBINE)	 */
 	/*---------------------------*/
+	$scope.atSmith = false;
+	$scope.showSmith = function(){
+		if($scope.atSmith){
+			$scope.atSmith = false;
+		}
+		$scope.atSmith = true;
+	};
 	/*---------------------------*/
 	/*	BOOK STORE				 */
 	/*---------------------------*/
+	$scope.atStore = false;
+	$scope.showStore = function(){
+		if($scope.atStore){
+			$scope.atStore = false;
+		}
+		$scope.atStore = true;
+	};
 }]);
