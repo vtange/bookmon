@@ -73,6 +73,7 @@ angular.module('bookmonGame').controller('libraryController',['$scope', '$http',
 	/*has books - regular play   */
 	/*---------------------------*/
 	$scope.file = ActiveUser.user.file;
+	console.log($scope.file);
 	$scope.getStats = BookStatsGenerator.getStats;
 	
 }]);
