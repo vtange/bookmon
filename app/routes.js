@@ -80,6 +80,7 @@ module.exports = function(app) {
 			var user = req.user;
 			var book = new Book();
 			book.level = 1;
+			book.xp = 0;
 			book.maxhp = req.body.stats.weight;
 			book.hp = book.maxhp;
 			book.mon = req.body.mon;

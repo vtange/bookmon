@@ -73,10 +73,10 @@ angular.module('bookmonGame').controller('libraryController',['$scope', '$http',
 	/*has books - regular play   */
 	/*---------------------------*/
 	$scope.file = ActiveUser.user.file;
-	console.log($scope.file);
 	$scope.getStats = BookStatsGenerator.getStats;
-	$scope.dropHP = function(){
-		
+	$scope.setHP = function(hp,max){
+		var percent = Math.floor((hp/max)*100);
+		return { "width" : percent+"%" };
 	};
 	
 }]);
