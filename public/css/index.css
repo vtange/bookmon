@@ -1,10 +1,13 @@
 *{
     box-sizing: border-box;/*reset page*/
 }
+a{
+	color:inherit;
+}
 /* background image */
 body {
     margin: 0;/*reset page*/
-	background-image: url("img/swirl+icon.png");
+	background-image: url("../img/swirl+icon.png");
 	background-repeat: repeat;
 	background-position: top;
 	background-size: 30%;
@@ -70,7 +73,7 @@ body, .btn, #header > #group1 > a{
 	position: relative;
 	width:60px;
 	height:40px;
-	background-image: url("img/2248-200.png");
+	background-image: url("../img/2248-200.png");
 	background-position: center;
 	background-size: 100%;
 	background-repeat: no-repeat;
