@@ -10,7 +10,6 @@ module.exports = function(app) {
     app.get('/', function(req, res) {
 		if(req.user){
 			User.findById(req.user.id).populate('file.books').exec(function(err,user){
-				console.log(user);
 				res.render('index.ejs', {
 					title : app.title, // get the title
 					user : req.user, // get the user out of session and pass to template
@@ -37,7 +36,6 @@ module.exports = function(app) {
 			}
 		if(req.user){
 			User.findById(req.user.id).populate('file.books').exec(function(err,user){
-				console.log(user);
 				res.render('index.ejs', {
 					title : app.title, // get the title
 					user : req.user, // get the user out of session and pass to template

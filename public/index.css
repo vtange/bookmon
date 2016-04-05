@@ -1,9 +1,6 @@
 *{
     box-sizing: border-box;/*reset page*/
 }
-a:hover{
-	text-decoration: none;
-}
 /* background image */
 body {
     margin: 0;/*reset page*/
@@ -41,6 +38,7 @@ body, .btn, #header > #group1 > a{
 /* RESET */
 /* HEADER */
 .navbar-default{
+	transition: background 0.5s ease;
 	border-radius: 0px;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
@@ -55,11 +53,12 @@ body, .btn, #header > #group1 > a{
 .btn-success{
 	background-color:rgb(240,255,220);
 }
-.btn-default:hover, .btn-success:hover{
+.btn-default:hover, .btn-success:hover, a:hover{
 	color:inherit;
-	background-color:#fff;
+	text-decoration: none;
 }
-.btn:active, .btn:focus{
+.btn:active, .btn:focus, a:active, a:focus{
+	text-decoration: none;
 	outline: none;
 }
 #header > #group1, #header > #group1 a{
@@ -80,3 +79,21 @@ body, .btn, #header > #group1 > a{
 }
 
 /* CUSTOM */
+
+#footer{
+	height:70px;
+	position: fixed;
+	bottom: 0;
+	width:80%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: #ca8;
+	border:3px solid #654b26;
+	border-bottom: 0px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+#footer .btn{
+	margin-left:10px;
+}
