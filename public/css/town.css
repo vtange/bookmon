@@ -34,3 +34,25 @@
 	height:35rem;
 	padding: 2rem;
 }
+
+/*----------*/
+/*-X-*/
+/*----------*/
+a:hover{
+    text-decoration: none;
+}
+a.boxclose{
+    position: absolute;
+	top:0;
+	right:15px;
+
+    cursor:pointer;
+    color: inherit;
+    font-size: 3.5rem;
+    font-weight: bold;
+	z-index: 9;
+}
+.boxclose:before{
+    content: "×";
+}
+/* X */

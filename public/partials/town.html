@@ -2,13 +2,16 @@
 <div data-ng-controller="townController">
 	<div id="click-guard" data-ng-show="atBldg()">
 		<div class="vert-centered bldg-interior repair-shop" data-ng-if="atRepair">
+			<a class="boxclose" data-ng-click="showRepair()"></a>
 			
 		</div>
 		<div class="vert-centered bldg-interior book-smith"  data-ng-if="atSmith">
-			
+			<a class="boxclose" data-ng-click="showSmith()"></a>
+
 		</div>
 		<div class="vert-centered bldg-interior book-store"  data-ng-if="atStore">
-			
+			<a class="boxclose" data-ng-click="showStore()"></a>
+
 		</div>
 	</div>
 	<div id="town-service-list" data-ng-style="blur()">

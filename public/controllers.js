@@ -97,7 +97,6 @@ angular.module('bookmonGame').controller('townController',['$scope', '$http', '$
 	$scope.atBldg = function(){
 		return $scope.atRepair || $scope.atSmith || $scope.atStore;
 	};
-	console.log($scope.atBldg());
 	$scope.blur = function(){
 		if($scope.atBldg()){
 			return { "filter": "blur(5px)"};
@@ -112,7 +111,9 @@ angular.module('bookmonGame').controller('townController',['$scope', '$http', '$
 		if($scope.atRepair){
 			$scope.atRepair = false;
 		}
-		$scope.atRepair = true;
+		else{
+			$scope.atRepair = true;
+		}
 	};
 	/*---------------------------*/
 	/*	BOOK SMITH (COMBINE)	 */
@@ -122,7 +123,9 @@ angular.module('bookmonGame').controller('townController',['$scope', '$http', '$
 		if($scope.atSmith){
 			$scope.atSmith = false;
 		}
-		$scope.atSmith = true;
+		else{
+			$scope.atSmith = true;
+		}
 	};
 	/*---------------------------*/
 	/*	BOOK STORE				 */
@@ -132,6 +135,8 @@ angular.module('bookmonGame').controller('townController',['$scope', '$http', '$
 		if($scope.atStore){
 			$scope.atStore = false;
 		}
-		$scope.atStore = true;
+		else{
+			$scope.atStore = true;
+		}
 	};
 }]);
