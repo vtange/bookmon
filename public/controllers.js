@@ -53,17 +53,12 @@ angular.module('bookmonGame').controller('libraryController',['$scope', '$window
 	];
 	$scope.confirm = function(book){
 		alertify.okBtn("Yes").cancelBtn("No").confirm("Are you sure you want to start as a "+book.mon+" library?", function (ev) {
-			  // The click event is in the
-			  // event variable, so you can use
-			  // it here.
+
 			  ev.preventDefault();
 			  alertify.success("Day 1: Your library opens with a stock of "+book.mon+"s.");//Player is O
 
 		}, function(ev) {
 
-			  // The click event is in the
-			  // event variable, so you can use
-			  // it here.
 			  ev.preventDefault();
 			  alertify.error("Take your time. Books are important :)");//Player is X
 

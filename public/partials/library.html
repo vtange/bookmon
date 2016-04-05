@@ -1,27 +1,31 @@
 <link rel="stylesheet" href="library.css"> <!-- load styles -->
 <div data-ng-controller="libraryController">
-	
-	<p>This is Library Section</p>
-	
-	<div>{{file}}</div>
-	
 	<div data-ng-if="noBooks()">
 		<div id="intro">
 			<h2>You don't have a book yet? It's dangerous out there!</h2>
-			<h3>Here, pick a book to bring with you on your journey!</h3>
+			<h3>Here, pick a book to start building up your library!</h3>
 		</div>
 		<div id="starter-book-list">
 			<div class="book-vertical" data-ng-repeat="book in starterBooks" data-ng-click="confirm(book)">
+				<div class="book-img" data-ng-switch="book.mon">
+					<img data-ng-switch-when="Comic"	src="img/comic.png"/>
+					<img data-ng-switch-when="Novel"	src="img/book.png"/>
+					<img data-ng-switch-when="Textbook"	src="img/textbook.png"/>
+				</div>
 				<h1>{{book.mon}}</h1>
 				<div>{{book.desc}}</div>
 			</div>
 		</div>
 	</div>
-	
 	<div id="book-list">
-		<div>
-		
-		
+		<div class="book-vertical" data-ng-repeat="book in file.books" data-ng-click="confirm(book)">
+			<div class="book-img" data-ng-switch="book.mon">
+				<img data-ng-switch-when="Comic"	src="img/comic.png"/>
+				<img data-ng-switch-when="Novel"	src="img/book.png"/>
+				<img data-ng-switch-when="Textbook"	src="img/textbook.png"/>
+			</div>
+			<h1>Level {{book.level}}</h1>
+			<h1>{{book.mon}}</h1>
 		</div>
 	</div>
 	
