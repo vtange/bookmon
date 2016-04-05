@@ -49,9 +49,8 @@ angular.module('bookmonGame').controller('libraryController',['$scope', '$window
 		return $scope.file.books.length === 0;
 	};
 	$scope.starterBooks = [
-		{mon:"Comic"},{mon:"Novel"},{mon:"Textbook"},
+		{mon:"Comic", desc:"Comics have quick engaging graphics and stories, but are light on substance."},{mon:"Novel", desc:"Novels come in all sorts of flavours. They are a balanced choice."},{mon:"Textbook", desc:"Laden with knowledge. Textbooks are down to earth, yet pack a serious punch if need be."},
 	];
-	$scope.getStats = BookStatsGenerator.getStats;
 	$scope.confirm = function(book){
 		alertify.okBtn("Yes").cancelBtn("No").confirm("Are you sure you want to start as a "+book.mon+" library?", function (ev) {
 			  // The click event is in the
@@ -75,6 +74,6 @@ angular.module('bookmonGame').controller('libraryController',['$scope', '$window
 	/*has books - regular play   */
 	/*---------------------------*/
 	$scope.file = ActiveUser.user.file;
-	
+	$scope.getStats = BookStatsGenerator.getStats;
 	
 }]);

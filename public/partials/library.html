@@ -5,17 +5,15 @@
 	
 	<div>{{file}}</div>
 	
-	<div data-ng-if="noBooks()" id="intro">
-		<h2>You don't have a book yet? It's dangerous out there!</h2>
-		<h3>Here, pick a book to bring with you on your journey!</h3>
+	<div data-ng-if="noBooks()">
+		<div id="intro">
+			<h2>You don't have a book yet? It's dangerous out there!</h2>
+			<h3>Here, pick a book to bring with you on your journey!</h3>
+		</div>
 		<div id="starter-book-list">
 			<div class="book-vertical" data-ng-repeat="book in starterBooks" data-ng-click="confirm(book)">
-				<div>{{book.mon}}</div>
-				<div>weight: {{getStats(book).weight}}</div>
-				<div>magic: {{getStats(book).magic}}</div>
-				<div>knowledge: {{getStats(book).knowledge}}</div>
-				<div>story: {{getStats(book).story}}</div>
-				<div>speed: {{getStats(book).speed}}</div>
+				<h1>{{book.mon}}</h1>
+				<div>{{book.desc}}</div>
 			</div>
 		</div>
 	</div>
