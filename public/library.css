@@ -26,3 +26,10 @@
 .book-img img{
 	width:50%;
 }
+.book-name span{
+	display: inline-block;
+}
+.hp-bar{
+	background-color:lightgreen;
+	border-radius: 10px;
+}

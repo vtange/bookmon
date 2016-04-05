@@ -24,9 +24,8 @@
 				<img data-ng-switch-when="Novel"	src="img/book.png"/>
 				<img data-ng-switch-when="Textbook"	src="img/textbook.png"/>
 			</div>
-			<h1>Level {{book.level}}</h1>
-			<h1>{{book.mon}}</h1>
-			<div>{{book.hp}}/{{book.maxhp}}</div>
+			<div class="book-name"><h3><span>Level {{book.level}}</span>  <span>{{book.mon}}</span></h3></div>
+			<div class="hp-bar">{{book.hp}}/{{book.maxhp}}</div>
 		</div>
 	</div>
 	
