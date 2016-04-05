@@ -75,5 +75,8 @@ angular.module('bookmonGame').controller('libraryController',['$scope', '$http',
 	$scope.file = ActiveUser.user.file;
 	console.log($scope.file);
 	$scope.getStats = BookStatsGenerator.getStats;
+	$scope.dropHP = function(){
+		
+	};
 	
 }]);

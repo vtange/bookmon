@@ -13,7 +13,7 @@
 	width:30%;
 	margin: 1%;
 	padding:30px;
-	border:1px solid #654b26;
+	border:3px solid #654b26;
 	background-color:rgb(255,240,220);
 	border-radius: 10px;
 	cursor: pointer;
@@ -29,7 +29,24 @@
 .book-name span{
 	display: inline-block;
 }
-.hp-bar{
+.hp-bar-red{
+	position: relative;
+	background-color:lightcoral;
+	border-radius: 10px;
+}
+.hp-bar-green{
+	position: absolute;
+	content:"";
+	top:0;
+	right:0;
 	background-color:lightgreen;
 	border-radius: 10px;
+	height:100%;
+	width:50%;
+}
+.hp-value{
+	position: relative;
+	z-index: 2;
+	
+	font-weight: bold;
 }
