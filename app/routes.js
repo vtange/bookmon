@@ -56,6 +56,7 @@ module.exports = function(app) {
 		if(req.user){
 			var user = req.user;
 			var book = new Book();
+			book.level = 1;
 			book.mon = req.body.mon;
 			book.save(function(err){
 				if(err)
