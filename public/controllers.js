@@ -80,3 +80,27 @@ angular.module('bookmonGame').controller('libraryController',['$scope', '$http',
 	};
 	
 }]);
+
+/*-------------*/
+/* Town - Repair, Combine, and Market    */
+/*-------------*/
+angular.module('bookmonGame').controller('townController',['$scope', '$http', '$window', 'alertify', 'ActiveUser', 'BookStatsGenerator',function ($scope, $http, $window, alertify, ActiveUser, BookStatsGenerator) {
+
+	/*---------------------------*/
+	/*	GET USER				 */
+	/*---------------------------*/
+	//user stuff
+	$scope.file = ActiveUser.user.file;
+	//book stats if needed
+	$scope.getStats = BookStatsGenerator.getStats;
+	
+	/*---------------------------*/
+	/*	BOOK REPAIR				 */
+	/*---------------------------*/
+	/*---------------------------*/
+	/*	BOOK SMITH (COMBINE)	 */
+	/*---------------------------*/
+	/*---------------------------*/
+	/*	BOOK STORE				 */
+	/*---------------------------*/
+}]);

@@ -12,5 +12,9 @@ myApp.config(function ($routeProvider, $locationProvider) {        //Determine w
       templateUrl: 'partials/library.html',
       controller: 'libraryController'
     })
+	.when('/game/town', {
+      templateUrl: 'partials/town.html',
+      controller: 'townController'
+    })
     .otherwise({redirectTo: '/'});
 });
