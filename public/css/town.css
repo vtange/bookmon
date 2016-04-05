@@ -2,16 +2,35 @@
 #town-service-list{
 	width:90%;
 	height:80vh;
+	margin: auto;
 	display: flex;
 	flex-direction: column;
 }
 .town-bldg{
 	height:15rem;
-	border:3px solid #654b26;
-	background-color:rgb(255,240,220);
-	border-radius: 10px;
 	padding: 2rem;
 	margin-top: 2rem;
 	
 	cursor: pointer;
+}
+
+.town-bldg, .bldg-interior{
+	border:3px solid #654b26;
+	background-color:rgb(255,240,220);
+	border-radius: 10px;	
+}
+
+#click-guard{
+	position: absolute;
+	top:0;
+	left: 0;
+	width:100%;
+	height:100%;
+	z-index: 10;
+}
+
+.bldg-interior{
+	width:80%;
+	height:35rem;
+	padding: 2rem;
 }

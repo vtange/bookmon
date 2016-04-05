@@ -86,8 +86,9 @@ body, .btn, #header > #group1 > a{
 #footer{
 	height:70px;
 	position: fixed;
+	left:0;
 	bottom: 0;
-	width:80%;
+	width:100%;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
