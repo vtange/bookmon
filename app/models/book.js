@@ -4,7 +4,9 @@ var mongoose = require('mongoose');
 
 var bookSchema = mongoose.Schema({
 	level : Number,
-	mon : String
+	mon : String,
+	hp: Number,
+	maxhp: Number
 });
 
 // methods ======================

@@ -135,7 +135,8 @@ body
 						break;
 				}
 			});
-			return stats;
+			book.stats = stats;
+			return book;
 		}
 	};
 	// return available functions for use in controllers

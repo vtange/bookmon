@@ -56,7 +56,7 @@ angular.module('bookmonGame').controller('libraryController',['$scope', '$http',
 			  ev.preventDefault();
 			//http post: user gets new bookmon with mon "book.mon"
 			
-			$http.post($window.location.href + "/new",book).success(function(data){
+			$http.post($window.location.href + "/new",$scope.getStats(book)).success(function(data){
 				$scope.file.books.push(data);
 				 alertify.success("Day 1: Your library opens with a stock of "+book.mon+"s.");
 			});
