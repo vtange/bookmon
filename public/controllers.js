@@ -41,7 +41,7 @@ angular.module('bookmonGame').controller('newGameController',['$scope', '$http',
 /*-------------*/
 /*The Library - List of Bookmons    */
 /*-------------*/
-angular.module('bookmonGame').controller('libraryController',['$scope', '$window', 'alertify', 'ActiveUser', 'BookStatsGenerator',function ($scope, $window, alertify, ActiveUser, BookStatsGenerator) {
+angular.module('bookmonGame').controller('libraryController',['$scope', '$http', '$window', 'alertify', 'ActiveUser', 'BookStatsGenerator',function ($scope, $http, $window, alertify, ActiveUser, BookStatsGenerator) {
 	/*---------------------------*/
 	/*no books - first time play */
 	/*---------------------------*/
@@ -53,14 +53,18 @@ angular.module('bookmonGame').controller('libraryController',['$scope', '$window
 	];
 	$scope.confirm = function(book){
 		alertify.okBtn("Yes").cancelBtn("No").confirm("Are you sure you want to start as a "+book.mon+" library?", function (ev) {
-
 			  ev.preventDefault();
-			  alertify.success("Day 1: Your library opens with a stock of "+book.mon+"s.");//Player is O
+			//http post: user gets new bookmon with mon "book.mon"
+			
+			$http.post($window.location.href + "/new",book).success(function(data){
+				$scope.file.books.push(data);
+				 alertify.success("Day 1: Your library opens with a stock of "+book.mon+"s.");
+			});
+			 
 
 		}, function(ev) {
-
 			  ev.preventDefault();
-			  alertify.error("Take your time. Books are important :)");//Player is X
+			  alertify.error("Take your time. Books are important :)");
 
 		});
 	};

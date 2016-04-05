@@ -1,5 +1,5 @@
 var appRoot = require('app-root-path');
-
+var Book = require('./models/book.js')
 // app/routes.js
 module.exports = function(app) {
 
@@ -49,7 +49,32 @@ module.exports = function(app) {
 			res.redirect('/');
 		}
 	});
-	
+	// =====================================
+    // NEW BOOK (STARTER BOOK) ========
+    // =====================================
+    app.post('/game/library/new', function(req, res) {
+		if(req.user){
+			var user = req.user;
+			var book = new Book();
+			book.mon = req.body.mon;
+			book.save(function(err){
+				if(err)
+					throw err;
+				user.file.books.push(book);
+				user.save(function(err){
+					if(err)
+						throw err;
+					console.log('user has new book');
+				});
+				console.log('new book');
+				res.send(book);
+			});
+		}
+		else{
+			res.redirect('/');
+		}
+	});
+		
 	
 	
 };

@@ -17,8 +17,8 @@
 			</div>
 		</div>
 	</div>
-	<div id="book-list">
-		<div class="book-vertical" data-ng-repeat="book in file.books" data-ng-click="confirm(book)">
+	<div id="book-list"  data-ng-if="!noBooks()">
+		<div class="book-vertical" data-ng-repeat="book in file.books">
 			<div class="book-img" data-ng-switch="book.mon">
 				<img data-ng-switch-when="Comic"	src="img/comic.png"/>
 				<img data-ng-switch-when="Novel"	src="img/book.png"/>
