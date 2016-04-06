@@ -116,6 +116,26 @@ module.exports = function(app) {
 			res.redirect('/');
 		}
 	});
-	
+	// =====================================
+    // NEW TRADE ========
+    // =====================================
+    app.post('/game/trade/new', function(req, res) {
+		if(req.user){
+			var user = req.user;
+			var trade = new Trade();
+			trade.who = user;
+			trade.tradingOut = req.body.book._id;
+			trade.wish = req.body.wish;
+			trade.save(function(err){
+				if(err)
+					throw err;
+				console.log("new trade");
+				res.send(200);
+			});
+		}
+		else{
+			res.redirect('/');
+		}
+	});
 	
 };

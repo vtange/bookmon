@@ -173,6 +173,7 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 		if($scope.newTrade){
 			$scope.newTrade = false;
 			$scope.currentDrop = null;
+			$scope.resetForm();
 		}
 		else{
 			$scope.newTrade = true;
@@ -189,16 +190,13 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	/*	DROP DOWN				 */
 	/*---------------------------*/	
 	//the form obj
-	$scope.outbound = {
-		book:null,
-		wish:"Select a type of book"
-	};
 	$scope.resetForm = function(){
 		$scope.outbound = {
-			book:"Select a book to offer",
+			book:null,
 			wish:"Select a type of book"
 		};
-	}
+	};
+	$scope.resetForm();
 	$scope.dropdown = function(number){
 		if($scope.currentDrop !== number){
 			$scope.currentDrop = number;
@@ -228,4 +226,12 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 			return "Select a book to offer";
 		}
 	};
+	$scope.postTrade = function(){
+		$http.post($window.location.href+"/new",$scope.outbound).success(function(data){
+			$scope.newTradeWindow();
+		}).error(function(data){
+			throw "Something went wrong posting your trade.";
+		})
+	};
+	
 }]);
