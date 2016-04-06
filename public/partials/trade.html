@@ -4,6 +4,17 @@
 		<div class="vert-centered bldg-interior" id="new-trade-window" data-ng-if="newTrade">
 			<a class="boxclose" data-ng-click="newTradeWindow()"></a>
 			<h1>Make a New Trade</h1>
+			<form id="form" data-ng-submit="">
+				<div id="inputs">
+					<div class="form-group">
+						<label>What book are you trading away?</label>
+					</div>
+					<div class="form-group">
+						<label>What are you looking for?</label>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-lg btn-success btn-block">Post Trade</button>
+			</form>
 		</div>
 	</div>
 	<div data-ng-style="blur()">
