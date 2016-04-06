@@ -143,3 +143,18 @@ angular.module('bookmonGame').controller('townController',['$scope', '$http', '$
 		}
 	};
 }]);
+
+/*-------------*/
+/* Port - Trade and offer trades with other Players    */
+/*-------------*/
+angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '$window', 'alertify', 'ActiveUser', 'BookStatsGenerator',function ($scope, $http, $window, alertify, ActiveUser, BookStatsGenerator) {
+
+	/*---------------------------*/
+	/*	GET USER				 */
+	/*---------------------------*/
+	//user stuff
+	$scope.file = ActiveUser.user.file;
+	//book stats if needed
+	$scope.getStats = BookStatsGenerator.getStats;
+
+}]);

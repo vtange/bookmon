@@ -1,0 +1,70 @@
+
+/*----------*/
+/*-X-*/
+/*----------*/
+a:hover{
+    text-decoration: none;
+}
+a.boxclose{
+    position: absolute;
+	top:0;
+	right:15px;
+
+    cursor:pointer;
+    color: inherit;
+    font-size: 3.5rem;
+    font-weight: bold;
+	z-index: 9;
+}
+.boxclose:before{
+    content: "×";
+}
+/* X */
+.book-list {
+	width:50%;
+}
+.book-horiz{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border-bottom: 3px dotted #654b26;
+}
+.book-horiz:last-child{
+	border-bottom: 0px;
+}
+.book-horiz:first-child{
+	border-bottom: 3px dotted #654b26;
+}
+.book-img img{
+	height:5rem;
+	margin-right: 3rem;
+}
+.book-name{
+	width:25%;
+}
+.book-name span{
+	display: inline-block;
+}
+.hp-bar-red{
+	position: relative;
+	background-color:lightcoral;
+	border-radius: 10px;
+	height:3rem;
+	width:50%;
+}
+.hp-bar-green{
+	transition:all 0.3s ease;
+	position: absolute;
+	content:"";
+	top:0;
+	right:0;
+	background-color:lightgreen;
+	border-radius: 10px;
+	height:100%;
+	width:100%;
+}
+.hp-value{
+	z-index: 2;
+	
+	font-weight: bold;
+}

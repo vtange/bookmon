@@ -16,5 +16,9 @@ myApp.config(function ($routeProvider, $locationProvider) {        //Determine w
       templateUrl: 'partials/town.html',
       controller: 'townController'
     })
+	.when('/game/trade', {
+      templateUrl: 'partials/trade.html',
+      controller: 'tradeController'
+    })
     .otherwise({redirectTo: '/'});
 });
