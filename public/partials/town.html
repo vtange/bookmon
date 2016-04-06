@@ -13,6 +13,7 @@
 					</div>
 					<div class="book-name"><h3><span>Level {{book.level}}</span>  <span>{{book.mon}}</span></h3></div>
 					<div class="hp-bar-red"><div class="vert-centered hp-value">{{book.hp}}/{{book.maxhp}}</div><div class="hp-bar-green" data-ng-style="setHP(book.hp,book.maxhp)"></div></div>
+					<div class="checkbox" data-ng-click="selectForRepair(book)"></div>
 				</div>
 			</div>
 		</div>

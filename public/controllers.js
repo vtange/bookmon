@@ -115,6 +115,9 @@ angular.module('bookmonGame').controller('townController',['$scope', '$http', '$
 			$scope.atRepair = true;
 		}
 	};
+	$scope.selectForRepair = function(book){
+		
+	};
 	/*---------------------------*/
 	/*	BOOK SMITH (COMBINE)	 */
 	/*---------------------------*/
