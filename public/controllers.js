@@ -164,11 +164,15 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	$http.post($window.location.href+"/pending").then(function(data){
 		$scope.pendingTrades = data;
 	});
-	
+
+	/*---------------------------*/
+	/*	NEW TRADE WINDOW		 */
+	/*---------------------------*/	
 	$scope.newTrade = false;
 	$scope.newTradeWindow = function(){
 		if($scope.newTrade){
 			$scope.newTrade = false;
+			$scope.currentDrop = null;
 		}
 		else{
 			$scope.newTrade = true;
@@ -180,5 +184,48 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 		}
 		return {};
 	};
-	
+
+	/*---------------------------*/
+	/*	DROP DOWN				 */
+	/*---------------------------*/	
+	//the form obj
+	$scope.outbound = {
+		book:null,
+		wish:"Select a type of book"
+	};
+	$scope.resetForm = function(){
+		$scope.outbound = {
+			book:"Select a book to offer",
+			wish:"Select a type of book"
+		};
+	}
+	$scope.dropdown = function(number){
+		if($scope.currentDrop !== number){
+			$scope.currentDrop = number;
+		}
+		else{
+			$scope.currentDrop = null;
+		}
+	};
+	$scope.dropped = function(number){
+		return $scope.currentDrop === number;
+	};
+	$scope.selectItem = function(list, index){
+		$scope.currentDrop = null;
+		if(list===1){
+			$scope.outbound.book = $scope.file.books[index];
+		}
+		else{
+			$scope.outbound.wish = $scope.possibleBooks[index];
+		}
+	};
+	$scope.possibleBooks = ["Comic","Novel","Journal","Textbook","Artbook","Scripture"];
+	$scope.getMon = function(book){
+		if(book){
+			return "Level "+book.level+" "+book.mon;
+		}
+		else{
+			return "Select a book to offer";
+		}
+	};
 }]);

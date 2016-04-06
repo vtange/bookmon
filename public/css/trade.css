@@ -39,6 +39,13 @@
 	border: 3px solid #654b26;
 	border-radius: 10px;
 }
+form #submit-button {
+	position: absolute;
+	bottom:2em;
+	right:2em;
+	width:25%;
+}
+
 
 /*----------*/
 /*-X-*/
@@ -61,28 +68,53 @@ a.boxclose{
     content: "×";
 }
 /* X */
-.book-list {
-	width:50%;
+
+/*------------*/
+/* CUSTOM DROPDOWN */
+/*--------------*/
+.wrapper-dropdown, .dropdown {
+    /* Size and position */
+    position: relative; /* Enable absolute positioning for children and pseudo elements */
+    padding: 10px;
+	border: 2px solid #654b26;
+	border-radius: 10px;
+
+    /* Styles */
+    background: beige;
+    color: #654b26;
+    outline: none;
+    cursor: pointer;
+
+    /* Font settings */
+    font-weight: bold;
 }
-.book-horiz{
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	border-bottom: 3px dotted #654b26;
+.wrapper-dropdown {
+	width: 200px;
 }
-.book-horiz:last-child{
-	border-bottom: 0px;
+.wrapper-dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    margin-top: -6px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: #654b26 transparent;    
 }
-.book-horiz:first-child{
-	border-bottom: 3px dotted #654b26;
+
+.dropdown{
+	position: absolute;
+	min-width: 200px;
+	z-index: 10;
 }
-.book-img img{
-	height:5rem;
-	margin-right: 3rem;
+.dropdown li{
+	display: block;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 2px dotted #654b26;
 }
-.book-name{
-	width:25%;
-}
-.book-name span{
-	display: inline-block;
+.dropdown li:hover{
+   	border-bottom: 2px solid #654b26;
 }
