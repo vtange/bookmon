@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
 var gravatar = require('gravatar');
 
-var tradeSchema = mongoose.Schema({
+var proposalSchema = mongoose.Schema({
+	toWho			: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 	tradingOut		: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
 	for				: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' }
 });
@@ -24,7 +25,7 @@ var userSchema = mongoose.Schema({
 		name		 : String,
 		library		 : String,
 		books		 : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
-		pendingTrades: [tradeSchema]
+		pendingTrades: [proposalSchema]
 	}
 
 });
