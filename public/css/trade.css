@@ -1,3 +1,44 @@
+.harbour h1{
+	position:relative;
+	display: inline-block;
+	padding:1rem;
+	margin:0;
+	margin-top: 2rem;
+	background-color: beige;
+	border: 3px solid #654b26;
+	border-radius: 10px;
+}
+.bldg-interior{
+	border:3px solid #654b26;
+	background-color:rgb(255,240,220);
+	border-radius: 10px;
+}
+
+#click-guard{
+	position: absolute;
+	top:0;
+	left: 0;
+	width:100%;
+	height:100%;
+	z-index: 10;
+}
+
+.bldg-interior{
+	width:80%;
+	height:60%;
+	padding: 2rem;
+	padding-top: 5rem;
+}
+.bldg-interior h1{
+	position:absolute;
+	display: inline-block;
+	top:-3rem;
+	padding:1rem;
+	margin:0;
+	background-color: beige;
+	border: 3px solid #654b26;
+	border-radius: 10px;
+}
 
 /*----------*/
 /*-X-*/
@@ -44,27 +85,4 @@ a.boxclose{
 }
 .book-name span{
 	display: inline-block;
-}
-.hp-bar-red{
-	position: relative;
-	background-color:lightcoral;
-	border-radius: 10px;
-	height:3rem;
-	width:50%;
-}
-.hp-bar-green{
-	transition:all 0.3s ease;
-	position: absolute;
-	content:"";
-	top:0;
-	right:0;
-	background-color:lightgreen;
-	border-radius: 10px;
-	height:100%;
-	width:100%;
-}
-.hp-value{
-	z-index: 2;
-	
-	font-weight: bold;
 }

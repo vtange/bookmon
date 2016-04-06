@@ -1,6 +1,7 @@
 var appRoot = require('app-root-path');
 var User = require('./models/user.js');
 var Book = require('./models/book.js');
+var Trade = require('./models/trade.js');
 // app/routes.js
 module.exports = function(app) {
 
@@ -99,7 +100,22 @@ module.exports = function(app) {
 			res.redirect('/');
 		}
 	});
-		
+	// =====================================
+    // GET PENDING TRADES ========
+    // =====================================
+    app.post('/game/trade/pending', function(req, res) {
+		if(req.user){
+			var user = req.user;
+			var trades = [];
+			Trade.find(function(trade){
+				trades.push(trade);
+			});
+			res.send(trades);
+		}
+		else{
+			res.redirect('/');
+		}
+	});
 	
 	
 };

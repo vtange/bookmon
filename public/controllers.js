@@ -157,4 +157,28 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	//book stats if needed
 	$scope.getStats = BookStatsGenerator.getStats;
 
+	/*---------------------------*/
+	/*	GET AVAIL TRADES		 */
+	/*---------------------------*/	
+	$scope.pendingTrades = [];
+	$http.post($window.location.href+"/pending").then(function(data){
+		$scope.pendingTrades = data;
+	});
+	
+	$scope.newTrade = false;
+	$scope.newTradeWindow = function(){
+		if($scope.newTrade){
+			$scope.newTrade = false;
+		}
+		else{
+			$scope.newTrade = true;
+		}
+	};
+	$scope.blur = function(){
+		if($scope.newTrade){
+			return { "filter": "blur(5px)"};
+		}
+		return {};
+	};
+	
 }]);
