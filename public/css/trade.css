@@ -122,6 +122,38 @@ a.boxclose{
 /*------------*/
 /* TRADE POSTING */
 /*-------------*/
+#bulletin-board{
+	display: flex;
+	flex-wrap: wrap;
+
+	padding: 2rem;
+}
+
 .trade-posting{
-	height:25rem;
+	position: relative;
+	height:18rem;
+	width:25%;
+	min-width: 200px;
+	padding: 2rem;
+	
+	box-shadow: 0.1em 0.1em 1em rgba(0,0,0,0.2);
+}
+
+.trade-posting h3, .trade-posting h5 {
+	margin:0;
+}
+.trade-posting div:first-child{
+	border-bottom: 2px dotted #654b26;
+}
+.trade-posting div:nth-child(2){
+	border-bottom: 1px solid #654b26;
+}
+.poster-info {
+	float:right;
+}
+.trade-posting .btn{
+	position: absolute;
+	bottom:-1em;
+	border: 2px solid #654b26;
+	
 }

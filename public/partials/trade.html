@@ -31,10 +31,17 @@
 	</div>
 	<div data-ng-style="blur()">
 		<h1>Harbour</h1>
-		<div class="trade-posting" data-ng-repeat="trade in pendingTrades" data-ng-if="pendingTrades.length" data-ng-style="blur()">
-			<div>{{trade.who}}</div>
-			<div>{{trade.tradingOut}}</div>
-			<div>{{trade.wish}}</div>
+		<div id="bulletin-board">
+			<div class="trade-posting" data-ng-repeat="trade in pendingTrades" data-ng-if="pendingTrades.length" data-ng-style="blur()">
+				<div><h3><b>Trading</b> : Level {{trade.tradingOut.level}} {{trade.tradingOut.mon}}</h3></div>
+				<div><h4><b>For </b>: {{trade.wish}}s</h4></div>
+				<b><i>Poster:</i></b>
+				<div class="poster-info">
+					<h5>{{trade.who.file.name}}</h5>
+					<h5>{{trade.who.file.library}}</h5>
+				</div>
+				<div class="btn btn-default">Propose Trade</div>
+			</div>
 		</div>
 		<div data-ng-if="!pendingTrades.length"><i>There seems to be no trading activity going on.</i></div>
 	</div>
