@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 var proposalSchema = mongoose.Schema({
 	originalTrade	: { type: mongoose.Schema.Types.ObjectId, ref: 'Trade' },
 	for				: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
-	proposer		: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+	proposer		: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+	poster			: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
 // methods ======================

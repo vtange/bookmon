@@ -124,6 +124,27 @@ module.exports = function(app) {
 		}
 	});
 	// =====================================
+    // GET PENDING TRADES ========
+    // =====================================
+    app.post('/game/trade/proposals', function(req, res) {
+		if(req.user){
+			var user = req.user;
+			var proposals = [];
+			var gotProps = q.defer();
+			Proposal.find({ $or: [ { proposer: user._id }, { poster : user._id } ] }).exec(function(err,proposal){
+				proposals.push(proposal);
+				
+				gotProps.resolve("yay");
+			});
+			gotProps.promise.then(function(){
+				res.send(proposals);
+			})
+		}
+		else{
+			res.redirect('/');
+		}
+	});
+	// =====================================
     // NEW TRADE ========
     // =====================================
     app.post('/game/trade/new', function(req, res) {
@@ -150,8 +171,10 @@ module.exports = function(app) {
     app.post('/game/trade/propose', function(req, res) {
 		if(req.user){
 			var user = req.user;
+			var poster = req.body.trade.who;
 			var proposal = new Proposal();
 			proposal.proposer = user;
+			proposal.poster = poster._id;
 			proposal.tradingOut = req.body.book._id;
 			proposal.for = req.body.book._id;
 			proposal.originalTrade = req.body.trade._id;
@@ -163,7 +186,6 @@ module.exports = function(app) {
 				user.save(function(err){
 					if(err)
 						throw err;
-					var poster = req.body.trade.who;
 					User.findById(poster._id).exec(function(err,poster){
 						poster.file.pendingTrades.push(proposal);
 						poster.save(function(err){

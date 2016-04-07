@@ -163,11 +163,21 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	$scope.pendingTrades = [];
 	$http.post($window.location.href+"/pending").success(function(data){
 		$scope.pendingTrades = data[0];
-		console.log($scope.pendingTrades);
 	}).error(function(err){
 		throw "error getting trade data";
 	});
 
+	/*---------------------------*/
+	/*	GET PROPOSALS			 */
+	/*---------------------------*/	
+	$scope.pendingProposals = [];
+	$http.post($window.location.href+"/proposals").success(function(data){
+		$scope.pendingTrades = data[0];
+		console.log(data);
+	}).error(function(err){
+		throw "error getting trade data";
+	});
+	
 	/*---------------------------*/
 	/*	NEW TRADE WINDOW		 */
 	/*---------------------------*/	
