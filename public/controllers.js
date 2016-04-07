@@ -172,8 +172,7 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	/*---------------------------*/	
 	$scope.pendingProposals = [];
 	$http.post($window.location.href+"/proposals").success(function(data){
-		$scope.pendingTrades = data[0];
-		console.log(data);
+		$scope.pendingProposals = data[0];
 	}).error(function(err){
 		throw "error getting trade data";
 	});

@@ -49,7 +49,11 @@
 			<div class="vert-centered bldg-interior" id="new-trade-window" data-ng-if="mailbox">
 			<a class="boxclose" data-ng-click="newWindow('mailbox')"></a>
 			<h1>Your Mailbox</h1>
-
+			<div id="mailbox">
+				<div data-ng-repeat="proposal in pendingProposals">
+					<div>A Level {{proposal.for.level}} {{proposal.for.mon}} for your Level {{proposal.what.level}} {{proposal.what.mon}}</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div data-ng-style="blur()">

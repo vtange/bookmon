@@ -131,7 +131,7 @@ module.exports = function(app) {
 			var user = req.user;
 			var proposals = [];
 			var gotProps = q.defer();
-			Proposal.find({ $or: [ { proposer: user._id }, { poster : user._id } ] }).exec(function(err,proposal){
+			Proposal.find({ $or: [ { proposer: user._id }, { poster : user._id } ] }).populate('what').populate('for').exec(function(err,proposal){
 				proposals.push(proposal);
 				
 				gotProps.resolve("yay");
@@ -175,7 +175,7 @@ module.exports = function(app) {
 			var proposal = new Proposal();
 			proposal.proposer = user;
 			proposal.poster = poster._id;
-			proposal.tradingOut = req.body.book._id;
+			proposal.what = req.body.trade.tradingOut._id;
 			proposal.for = req.body.book._id;
 			proposal.originalTrade = req.body.trade._id;
 			proposal.save(function(err){
