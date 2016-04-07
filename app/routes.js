@@ -109,7 +109,7 @@ module.exports = function(app) {
 			var user = req.user;
 			var trades = [];
 			var gotTrades = q.defer();
-			Trade.find({},function(err,trade){
+			Trade.find({}).populate('who').populate('tradingOut').exec(function(err,trade){
 				trades.push(trade);
 				
 				gotTrades.resolve("yay");

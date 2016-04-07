@@ -8,7 +8,7 @@
 	border: 3px solid #654b26;
 	border-radius: 10px;
 }
-.bldg-interior{
+.bldg-interior, .trade-posting{
 	border:3px solid #654b26;
 	background-color:rgb(255,240,220);
 	border-radius: 10px;
@@ -117,4 +117,11 @@ a.boxclose{
 }
 .dropdown li:hover{
    	border-bottom: 2px solid #654b26;
+}
+
+/*------------*/
+/* TRADE POSTING */
+/*-------------*/
+.trade-posting{
+	height:25rem;
 }
