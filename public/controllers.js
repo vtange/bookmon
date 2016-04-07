@@ -171,15 +171,19 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	/*---------------------------*/
 	/*	NEW TRADE WINDOW		 */
 	/*---------------------------*/	
-	$scope.newTrade = false;
-	$scope.newTradeWindow = function(){
-		if($scope.newTrade){
-			$scope.newTrade = false;
+	$scope.proposal = false;
+	$scope.trade = false;
+	$scope.anyWindow = function(){
+		return $scope.trade || $scope.proposal;
+	}
+	$scope.newWindow = function(WhatWindow){
+		if($scope[WhatWindow]){
+			$scope[WhatWindow] = false;
 			$scope.currentDrop = null;
 			$scope.resetForm();
 		}
 		else{
-			$scope.newTrade = true;
+			$scope[WhatWindow] = true;
 		}
 	};
 	$scope.blur = function(){
@@ -231,10 +235,18 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	};
 	$scope.postTrade = function(){
 		$http.post($window.location.href+"/new",$scope.outbound).success(function(data){
-			$scope.newTradeWindow();
+			$scope.newWindow('trade');
+			alertify.success("You posted a trade post.");
 		}).error(function(data){
-			throw "Something went wrong posting your trade.";
+			alertify.error("Something went wrong posting your trade.");
 		})
 	};
-	
+	$scope.sendProposal= function(){
+		$http.post($window.location.href+"/propose",$scope.outbound).success(function(data){
+			$scope.newWindow('proposal');
+			alertify.success("You made a trade proposal.");
+		}).error(function(data){
+			alertify.error("Something went wrong sending your proposal.");
+		})
+	};
 }]);

@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="css/trade.css"> <!-- load styles -->
 <div data-ng-controller="tradeController" class="harbour">
-	<div id="click-guard" data-ng-show="newTrade">
-		<div class="vert-centered bldg-interior" id="new-trade-window" data-ng-if="newTrade">
-			<a class="boxclose" data-ng-click="newTradeWindow()"></a>
+	<div id="click-guard" data-ng-show="anyWindow()">
+		<div class="vert-centered bldg-interior" id="new-trade-window" data-ng-if="trade">
+			<a class="boxclose" data-ng-click="newWindow('trade')"></a>
 			<h1>Make a New Trade</h1>
 			<form id="form" data-ng-submit="postTrade()">
 				<div id="inputs">
@@ -28,6 +28,24 @@
 				<button id="submit-button" type="submit" class="btn btn-lg btn-success btn-block">Post Trade</button>
 			</form>
 		</div>
+		<div class="vert-centered bldg-interior" id="new-trade-window" data-ng-if="proposal">
+			<a class="boxclose" data-ng-click="newWindow('proposal')"></a>
+			<h1>Make a Proposal</h1>
+			<form id="form" data-ng-submit="sendProposal()">
+				<div id="inputs">
+					<div class="form-group">
+						<label>What book will you trade away?</label>
+						<div class="wrapper-dropdown" data-ng-click="dropdown(1)">
+							<span>{{getMon(outbound.book)}}</span>
+						</div>
+						<ul class="dropdown" data-ng-if="dropped(1)">
+							<li data-ng-repeat="book in file.books" data-ng-click="selectItem(1,$index)">Level {{book.level}} {{book.mon}}</li>
+						</ul>
+					</div>
+				</div>
+				<button id="submit-button" type="submit" class="btn btn-lg btn-success btn-block">Send Proposal</button>
+			</form>
+		</div>
 	</div>
 	<div data-ng-style="blur()">
 		<h1>Harbour</h1>
@@ -40,7 +58,7 @@
 					<h5>{{trade.who.file.name}}</h5>
 					<h5>{{trade.who.file.library}}</h5>
 				</div>
-				<div class="btn btn-default">Propose Trade</div>
+				<div class="btn btn-default" data-ng-click="newWindow('proposal')">Propose Trade</div>
 			</div>
 		</div>
 		<div data-ng-if="!pendingTrades.length"><i>There seems to be no trading activity going on.</i></div>
@@ -48,6 +66,6 @@
 
 	<div id="footer">
 		<div><h2><span>1,000</span></h2></div>
-		<div><a href="/game/town"><div class="btn btn-default"><h4>Back to Town</h4></div></a><div class="btn btn-default" data-ng-click="newTradeWindow()"><h4>Start a Trade</h4></div></div>
+		<div><a href="/game/town"><div class="btn btn-default"><h4>Back to Town</h4></div></a><div class="btn btn-default" data-ng-click="newWindow('trade')"><h4>Start a Trade</h4></div></div>
 	</div>
 </div>
