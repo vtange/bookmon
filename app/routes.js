@@ -2,6 +2,7 @@ var appRoot = require('app-root-path');
 var User = require('./models/user.js');
 var Book = require('./models/book.js');
 var Trade = require('./models/trade.js');
+var q 	  = require('q');
 // app/routes.js
 module.exports = function(app) {
 
@@ -107,10 +108,15 @@ module.exports = function(app) {
 		if(req.user){
 			var user = req.user;
 			var trades = [];
-			Trade.find(function(trade){
+			var gotTrades = q.defer();
+			Trade.find({},function(err,trade){
 				trades.push(trade);
+				
+				gotTrades.resolve("yay");
 			});
-			res.send(trades);
+			gotTrades.promise.then(function(){
+				res.send(trades);
+			})
 		}
 		else{
 			res.redirect('/');
