@@ -46,6 +46,11 @@
 				<button id="submit-button" type="submit" class="btn btn-lg btn-success btn-block">Send Proposal</button>
 			</form>
 		</div>
+			<div class="vert-centered bldg-interior" id="new-trade-window" data-ng-if="mailbox">
+			<a class="boxclose" data-ng-click="newWindow('mailbox')"></a>
+			<h1>Your Mailbox</h1>
+
+		</div>
 	</div>
 	<div data-ng-style="blur()">
 		<h1>Harbour</h1>
@@ -61,11 +66,15 @@
 				<div class="btn btn-default" data-ng-click="newWindow('proposal',trade)">Propose Trade</div>
 			</div>
 		</div>
-		<div data-ng-if="!pendingTrades.length"><i>There seems to be no trading activity going on.</i></div>
+		<div data-ng-if="!pendingTrades.length"><i>Aside from yourself, no one seems to be interested in trading books.</i></div>
 	</div>
 
 	<div id="footer">
 		<div><h2><span>1,000</span></h2></div>
-		<div><a href="/game/town"><div class="btn btn-default"><h4>Back to Town</h4></div></a><div class="btn btn-default" data-ng-click="newWindow('trade')"><h4>Start a Trade</h4></div></div>
+		<div>
+			<a href="/game/town"><div class="btn btn-default"><h4>Back to Town</h4></div></a>
+			<div class="btn btn-default" data-ng-click="newWindow('mailbox')"><h4>Mailbox</h4></div>
+			<div class="btn btn-default" data-ng-click="newWindow('trade')"><h4>Start a Trade</h4></div>
+		</div>
 	</div>
 </div>

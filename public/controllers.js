@@ -173,8 +173,9 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	/*---------------------------*/	
 	$scope.proposal = false;
 	$scope.trade = false;
+	$scope.mailbox = false;
 	$scope.anyWindow = function(){
-		return $scope.trade || $scope.proposal;
+		return $scope.trade || $scope.proposal || $scope.mailbox;
 	}
 	$scope.newWindow = function(WhatWindow,TradeInfo){
 		if(TradeInfo){
@@ -190,7 +191,7 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 		}
 	};
 	$scope.blur = function(){
-		if($scope.newTrade){
+		if($scope.anyWindow()){
 			return { "filter": "blur(5px)"};
 		}
 		return {};
@@ -252,4 +253,11 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 			alertify.error("Something went wrong sending your proposal.");
 		})
 	};
+
+
+	/*---------------------------*/
+	/*	CHECK OWN PROPOSALS		 */
+	/*---------------------------*/	
+
+	
 }]);
