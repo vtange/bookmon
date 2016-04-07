@@ -58,7 +58,7 @@
 					<h5>{{trade.who.file.name}}</h5>
 					<h5>{{trade.who.file.library}}</h5>
 				</div>
-				<div class="btn btn-default" data-ng-click="newWindow('proposal')">Propose Trade</div>
+				<div class="btn btn-default" data-ng-click="newWindow('proposal',trade)">Propose Trade</div>
 			</div>
 		</div>
 		<div data-ng-if="!pendingTrades.length"><i>There seems to be no trading activity going on.</i></div>

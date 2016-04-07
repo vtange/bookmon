@@ -2,6 +2,7 @@ var appRoot = require('app-root-path');
 var User = require('./models/user.js');
 var Book = require('./models/book.js');
 var Trade = require('./models/trade.js');
+var Proposal = require('./models/proposal.js');
 var q 	  = require('q');
 // app/routes.js
 module.exports = function(app) {
@@ -137,6 +138,42 @@ module.exports = function(app) {
 					throw err;
 				console.log("new trade");
 				res.send(200);
+			});
+		}
+		else{
+			res.redirect('/');
+		}
+	});
+	// =====================================
+    // NEW TRADE ========
+    // =====================================
+    app.post('/game/trade/propose', function(req, res) {
+		if(req.user){
+			var user = req.user;
+			var proposal = new Proposal();
+			proposal.proposer = user;
+			proposal.tradingOut = req.body.book._id;
+			proposal.for = req.body.book._id;
+			proposal.originalTrade = req.body.trade._id;
+			proposal.save(function(err){
+				if(err)
+					throw err;
+				//send trade proposal to sender and poster
+				user.file.pendingTrades.push(proposal);
+				user.save(function(err){
+					if(err)
+						throw err;
+					var poster = req.body.trade.who;
+					User.findById(poster._id).exec(function(err,poster){
+						poster.file.pendingTrades.push(proposal);
+						poster.save(function(err){
+							if(err)
+								throw err;
+							res.send(200);
+						});
+					});
+
+				});
 			});
 		}
 		else{

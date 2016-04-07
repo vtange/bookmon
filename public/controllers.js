@@ -176,7 +176,10 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	$scope.anyWindow = function(){
 		return $scope.trade || $scope.proposal;
 	}
-	$scope.newWindow = function(WhatWindow){
+	$scope.newWindow = function(WhatWindow,TradeInfo){
+		if(TradeInfo){
+			$scope.outbound.trade = TradeInfo;
+		}
 		if($scope[WhatWindow]){
 			$scope[WhatWindow] = false;
 			$scope.currentDrop = null;
