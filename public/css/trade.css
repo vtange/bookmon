@@ -1,4 +1,4 @@
-.harbour h1{
+.harbour > div > h1{
 	position:relative;
 	display: inline-block;
 	padding:1rem;
@@ -7,15 +7,15 @@
 	background-color: beige;
 }
 
-.harbour h1, .trade-posting, .bldg-interior{
+.harbour > div > h1, .trade-posting, .bldg-interior{
 	box-shadow: 0.1em 0.1em 0.5em rgba(0,0,0,0.2);
 }
 
-.harbour h1, .bldg-interior, .trade-posting, .proposal, .proposed{
+.harbour > div  > h1, .bldg-interior, .trade-posting, .proposal, .proposed, #proposal-checker{
 	border:3px solid #654b26;
 	border-radius: 10px;
 }
-.bldg-interior, .trade-posting, .proposal, .proposed{
+.bldg-interior, .trade-posting, .proposal, .proposed, #proposal-checker{
 	background-color:rgb(255,240,220);
 }
 #click-guard, #click-guard2{
@@ -33,7 +33,7 @@
 	padding: 2rem;
 	padding-top: 5rem;
 }
-.bldg-interior h1{
+.bldg-interior > h1, #proposal-checker > h1{
 	position:absolute;
 	display: inline-block;
 	top:-3rem;
@@ -190,4 +190,11 @@ a.boxclose{
 }
 .proposed{
 	background-color:green;
+}
+
+#proposal-checker{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding:2rem
 }

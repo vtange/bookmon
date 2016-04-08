@@ -277,8 +277,17 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	}
 	$scope.check = function(proposal){
 		if($scope.checking===null){
-			$scope.checking = proposal;
-			console.log($scope.checking);
+			//split. mine and theirs. mine is toward left, theirs is toward right.
+			if($scope.isOwnProposals(proposal)){
+				$scope.checking = {
+
+				}
+			}
+			else{
+				$scope.checking = {
+
+				}
+			}
 		}
 		else{
 			$scope.checking = null;
