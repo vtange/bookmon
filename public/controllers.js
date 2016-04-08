@@ -161,21 +161,27 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	/*	GET AVAIL TRADES		 */
 	/*---------------------------*/	
 	$scope.pendingTrades = [];
-	$http.post($window.location.href+"/pending").success(function(data){
-		$scope.pendingTrades = data[0];
-	}).error(function(err){
-		throw "error getting trade data";
-	});
+	$scope.getTrades = function(){
+		$http.post($window.location.href+"/pending").success(function(data){
+			$scope.pendingTrades = data[0];
+		}).error(function(err){
+			throw "error getting trade data";
+		});
+	};
+	$scope.getTrades();
 
 	/*---------------------------*/
 	/*	GET PROPOSALS			 */
 	/*---------------------------*/	
 	$scope.pendingProposals = [];
-	$http.post($window.location.href+"/proposals").success(function(data){
-		$scope.pendingProposals = data[0];
-	}).error(function(err){
-		throw "error getting trade data";
-	});
+	$scope.getProposals = function(){
+		$http.post($window.location.href+"/proposals").success(function(data){
+			$scope.pendingProposals = data[0];
+		}).error(function(err){
+			throw "error getting trade data";
+		});
+	};
+	$scope.getProposals();
 	
 	/*---------------------------*/
 	/*	NEW TRADE WINDOW		 */
@@ -266,31 +272,52 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 
 	/*---------------------------*/
 	/*	CHECK OWN PROPOSALS		 */
-	/*---------------------------*/	
-
+	/*---------------------------*/
 	$scope.checking = null;
 	$scope.isOwnProposals = function(proposal){
 		return proposal.proposer._id === ActiveUser.user._id;
-	}
+	};
 	$scope.isResponse = function(proposal){
 		return proposal.poster._id === ActiveUser.user._id;
-	}
+	};
 	$scope.check = function(proposal){
 		if($scope.checking===null){
+			$scope.targetProposal = proposal;
 			//split. mine and theirs. mine is toward left, theirs is toward right.
 			if($scope.isOwnProposals(proposal)){
 				$scope.checking = {
-
+					mine:proposal.for,
+					theirs:proposal.what
 				}
 			}
 			else{
 				$scope.checking = {
-
+					mine:proposal.what,
+					theirs:proposal.for
 				}
 			}
 		}
 		else{
 			$scope.checking = null;
 		}
-	}
+	};
+	$scope.targetProposal = null;
+	$scope.confirmTrade = function(){
+		if($scope.targetProposal===null){
+			alertify.error("There doesn't seem to be a trade to confirm.");
+		}
+		else{
+			$http.post($window.location.href+"/do",$scope.targetProposal).success(function(data){
+				//at server, we will 
+					//delete all trades and proposals (except this one ofc) related to both books
+					//swap the books
+				//reset lists
+				$scope.getProposals();
+				$scope.getTrades();
+				$scope.checking = null;
+			}).error(function(data){
+				alertify.error("Something went wrong while trading.");
+			})
+		}
+	};
 }]);

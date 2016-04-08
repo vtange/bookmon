@@ -194,7 +194,29 @@ a.boxclose{
 
 #proposal-checker{
 	display: flex;
+	flex-direction: column;
+	padding:2rem
+}
+#proposal-checker h3,#proposal-checker h1{
+	margin:0;
+}
+#trade-buttons{
+	width:45%;
+	margin: auto;
+	margin-top: 2rem;
+	margin-bottom:2rem;
+	display: flex;
+	flex-direction: row;
+}
+#trade-buttons .btn{
+	display: inline-block;
+	width:40%;
+}
+#trade-buttons .btn:last-child{
+	margin-left: 20%;
+}
+#trade-details{
+	display: flex;
 	flex-direction: row;
 	align-items: center;
-	padding:2rem
 }
