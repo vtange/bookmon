@@ -5,15 +5,19 @@
 	margin:0;
 	margin-top: 2rem;
 	background-color: beige;
-	border: 3px solid #654b26;
+}
+
+.harbour h1, .trade-posting, .bldg-interior{
+	box-shadow: 0.1em 0.1em 0.5em rgba(0,0,0,0.2);
+}
+
+.harbour h1, .bldg-interior, .trade-posting, .proposal, .proposed{
+	border:3px solid #654b26;
 	border-radius: 10px;
 }
 .bldg-interior, .trade-posting, .proposal, .proposed{
-	border:3px solid #654b26;
 	background-color:rgb(255,240,220);
-	border-radius: 10px;
 }
-
 #click-guard{
 	position: absolute;
 	top:0;
@@ -39,6 +43,7 @@
 	border: 3px solid #654b26;
 	border-radius: 10px;
 }
+
 form #submit-button {
 	position: absolute;
 	bottom:2em;
@@ -136,8 +141,6 @@ a.boxclose{
 	min-width: 200px;
 	padding: 2rem;
 	margin-right: 2rem;
-	
-	box-shadow: 0.1em 0.1em 1em rgba(0,0,0,0.2);
 }
 
 .trade-posting h3, .trade-posting h5 {

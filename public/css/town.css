@@ -1,10 +1,27 @@
-
 #town-service-list{
 	width:90%;
 	height:80vh;
 	margin: auto;
 	display: flex;
 	flex-direction: column;
+}
+#town-service-list > h1{
+	position:relative;
+	display: inline-block;
+	padding:1rem;
+	margin:0;
+	margin-top: 2rem;
+	background-color: beige;
+}
+#town-service-list > h1, .town-bldg, .bldg-interior{
+	box-shadow: 0.1em 0.1em 0.5em rgba(0,0,0,0.2);
+}
+#town-service-list > h1, .town-bldg, .bldg-interior{
+	border:3px solid #654b26;
+	border-radius: 10px;
+}
+.town-bldg, .bldg-interior{
+	background-color:rgb(255,240,220);
 }
 .town-bldg{
 	height:15rem;
@@ -13,13 +30,6 @@
 	
 	cursor: pointer;
 }
-
-.town-bldg, .bldg-interior{
-	border:3px solid #654b26;
-	background-color:rgb(255,240,220);
-	border-radius: 10px;
-}
-
 #click-guard{
 	position: absolute;
 	top:0;
@@ -28,7 +38,6 @@
 	height:100%;
 	z-index: 10;
 }
-
 .bldg-interior{
 	width:80%;
 	height:60%;
