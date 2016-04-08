@@ -51,20 +51,15 @@
 			<h1>Your Mailbox</h1>
 			<div id="mailbox">
 				<div id="proposal-list" data-ng-repeat="proposal in pendingProposals">
-					<div data-ng-if="isOwnProposal(proposal)">
-						<div class="proposa-textl">
+					<div data-ng-if="isOwnProposals(proposal)">
+						<div class="proposal-text">
+							<div><h3><span class="proposal">Proposed</span> your</h3></div>
 							<div class="book-img" data-ng-switch="proposal.for.mon">
 								<img data-ng-switch-when="Comic"	src="img/comic.png"/>
 								<img data-ng-switch-when="Novel"	src="img/book.png"/>
 								<img data-ng-switch-when="Textbook"	src="img/textbook.png"/>
 							</div>
-							<div class="book-name"><h3><span>Your Level {{proposal.for.level}}</span>  <span>{{proposal.for.mon}}</span> for <span>{{proposal.poster.file.name}}</span>'s </h3></div>
-							<div class="book-img" data-ng-switch="proposal.what.mon">
-								<img data-ng-switch-when="Comic"	src="img/comic.png"/>
-								<img data-ng-switch-when="Novel"	src="img/book.png"/>
-								<img data-ng-switch-when="Textbook"	src="img/textbook.png"/>
-							</div>
-							<div class="book-name"><h3><span>Level {{proposal.what.level}}</span>  <span>{{proposal.what.mon}}</span></h3></div>
+							<div><h3>Your Level {{proposal.for.level}} {{proposal.for.mon}} to {{proposal.poster.file.name}}</h3></div>
 						</div>
 					</div>
 					<div data-ng-if="isResponse(proposal)">
