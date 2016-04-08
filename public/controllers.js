@@ -268,5 +268,10 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	/*	CHECK OWN PROPOSALS		 */
 	/*---------------------------*/	
 
-	
+	$scope.isOwnProposals = function(proposal){
+		return proposal.proposer._id =  ActiveUser.user._id;
+	}
+	$scope.isResponse = function(proposal){
+			return proposal.poster._id =  ActiveUser.user._id;
+	}
 }]);

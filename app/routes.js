@@ -131,7 +131,7 @@ module.exports = function(app) {
 			var user = req.user;
 			var proposals = [];
 			var gotProps = q.defer();
-			Proposal.find({ $or: [ { proposer: user._id }, { poster : user._id } ] }).populate('what').populate('for').exec(function(err,proposal){
+			Proposal.find({ $or: [ { proposer: user._id }, { poster : user._id } ] }).populate('what').populate('for').populate('proposer').populate('poster').exec(function(err,proposal){
 				proposals.push(proposal);
 				
 				gotProps.resolve("yay");

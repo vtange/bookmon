@@ -8,7 +8,7 @@
 	border: 3px solid #654b26;
 	border-radius: 10px;
 }
-.bldg-interior, .trade-posting{
+.bldg-interior, .trade-posting, .proposal{
 	border:3px solid #654b26;
 	background-color:rgb(255,240,220);
 	border-radius: 10px;
@@ -120,7 +120,7 @@ a.boxclose{
 }
 
 /*------------*/
-/* TRADE POSTING */
+/* TRADE POSTS ON BULLETIN */
 /*-------------*/
 #bulletin-board{
 	display: flex;
@@ -156,5 +156,28 @@ a.boxclose{
 	position: absolute;
 	bottom:-1em;
 	border: 2px solid #654b26;
-	
+}
+/*------------*/
+/* TRADE PROPOSALS IN MAILBOX */
+/*-------------*/
+#proposal-list > div{
+	border-bottom: 2px dotted #654b26;
+}
+.proposal-text{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	line-height: 2rem;
+	padding-left: 1rem;
+}
+.proposal-text img{
+	height: 3rem;
+	margin:1rem;
+}
+.proposal{
+	background-color:chocolate;
+	color:white;
+	line-height: 3rem;
+	padding: 0.5rem;
+	cursor: pointer;
 }
