@@ -268,10 +268,20 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	/*	CHECK OWN PROPOSALS		 */
 	/*---------------------------*/	
 
+	$scope.checking = null;
 	$scope.isOwnProposals = function(proposal){
 		return proposal.proposer._id === ActiveUser.user._id;
 	}
 	$scope.isResponse = function(proposal){
-			return proposal.poster._id === ActiveUser.user._id;
+		return proposal.poster._id === ActiveUser.user._id;
+	}
+	$scope.check = function(proposal){
+		if($scope.checking===null){
+			$scope.checking = proposal;
+			console.log($scope.checking);
+		}
+		else{
+			$scope.checking = null;
+		}
 	}
 }]);

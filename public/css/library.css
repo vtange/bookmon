@@ -10,9 +10,10 @@
 .book-vertical{
 	transition:background 0.5s ease;
 
+	min-width:25rem;
 	width:30%;
 	margin: 1%;
-	padding:30px;
+	padding:2rem;
 	border:3px solid #654b26;
 	background-color:rgb(255,240,220);
 	border-radius: 10px;

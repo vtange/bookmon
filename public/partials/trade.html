@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/library.css"> <!-- load styles -->
 <link rel="stylesheet" href="css/trade.css"> <!-- load styles -->
 <div data-ng-controller="tradeController" class="harbour">
 	<div id="click-guard" data-ng-show="anyWindow()">
@@ -50,10 +51,23 @@
 			<a class="boxclose" data-ng-click="newWindow('mailbox')"></a>
 			<h1>Your Mailbox</h1>
 			<div id="mailbox">
+				<div id="click-guard2" data-ng-show="checking">
+					<div class="vert-centered" style="width:70%">
+						<div class="book-vertical">
+							<div class="book-img" data-ng-switch="checking.what.mon">
+								<img data-ng-switch-when="Comic"	src="img/comic.png"/>
+								<img data-ng-switch-when="Novel"	src="img/book.png"/>
+								<img data-ng-switch-when="Textbook"	src="img/textbook.png"/>
+							</div>
+							<div class="book-name"><h3><span>Level {{checking.what.level}}</span>  <span>{{checking.what.mon}}</span></h3></div>
+							<div class="hp-bar-red"><div class="hp-value">{{checking.what.hp}}/{{checking.what.maxhp}}</div><div class="hp-bar-green" data-ng-style="setHP(checking.what.hp,checking.what.maxhp)"></div></div>
+						</div>
+					</div>
+				</div>
 				<div id="proposal-list" data-ng-repeat="proposal in pendingProposals">
 					<div data-ng-if="isOwnProposals(proposal)">
 						<div class="proposal-text">
-							<div><h3><span class="proposed">Proposed</span> your</h3></div>
+							<div><h3><span class="proposed" data-ng-click="check(proposal)">Proposed</span> your</h3></div>
 							<div class="book-img" data-ng-switch="proposal.for.mon">
 								<img data-ng-switch-when="Comic"	src="img/comic.png"/>
 								<img data-ng-switch-when="Novel"	src="img/book.png"/>
@@ -64,7 +78,7 @@
 					</div>
 					<div data-ng-if="isResponse(proposal)">
 						<div class="proposal-text">
-							<div><h3><span class="proposal">Proposal</span> for your</h3></div>
+							<div><h3><span class="proposal" data-ng-click="check(proposal)">Proposal</span> for your</h3></div>
 							<div class="book-img" data-ng-switch="proposal.what.mon">
 								<img data-ng-switch-when="Comic"	src="img/comic.png"/>
 								<img data-ng-switch-when="Novel"	src="img/book.png"/>

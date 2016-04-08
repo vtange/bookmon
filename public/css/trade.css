@@ -18,7 +18,7 @@
 .bldg-interior, .trade-posting, .proposal, .proposed{
 	background-color:rgb(255,240,220);
 }
-#click-guard{
+#click-guard, #click-guard2{
 	position: absolute;
 	top:0;
 	left: 0;
