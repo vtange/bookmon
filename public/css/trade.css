@@ -1,4 +1,4 @@
-.harbour > div > h1{
+#harbour h1{
 	position:relative;
 	display: inline-block;
 	padding:1rem;
@@ -7,14 +7,18 @@
 	background-color: beige;
 }
 
-.harbour > div > h1, .trade-posting, .bldg-interior{
+#harbour h1, #harbour .wrapper-dropdown, .trade-posting, .bldg-interior{
 	box-shadow: 0.1em 0.1em 0.5em rgba(0,0,0,0.2);
 }
 
-.harbour > div  > h1, .bldg-interior, .trade-posting, .proposal, .proposed, #proposal-checker{
+#harbour h1, #harbour .wrapper-dropdown, .bldg-interior, .trade-posting, .proposal, .proposed, #proposal-checker{
 	border:3px solid #654b26;
 	border-radius: 10px;
 }
+#harbour .wrapper-dropdown{
+	display: inline-block;
+}
+
 .bldg-interior, .trade-posting, .proposal, .proposed, #proposal-checker{
 	background-color:rgb(255,240,220);
 }
@@ -127,7 +131,7 @@ a.boxclose{
 /*------------*/
 /* TRADE POSTS ON BULLETIN */
 /*-------------*/
-#bulletin-board{
+#bulletin-board > div{
 	display: flex;
 	flex-wrap: wrap;
 
@@ -159,7 +163,6 @@ a.boxclose{
 	position: absolute;
 	bottom:-1em;
 	border: 2px solid #654b26;
-	background-color: green;
 	color:#fff;
 }
 /*------------*/

@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/library.css"> <!-- load styles -->
 <link rel="stylesheet" href="css/trade.css"> <!-- load styles -->
-<div data-ng-controller="tradeController" class="harbour">
+<div data-ng-controller="tradeController">
 	<div id="click-guard" data-ng-show="anyWindow()">
 		<div class="vert-centered bldg-interior" id="new-trade-window" data-ng-if="trade">
 			<a class="boxclose" data-ng-click="newWindow('trade')"></a>
@@ -51,6 +51,7 @@
 			<a class="boxclose" data-ng-click="newWindow('mailbox')"></a>
 			<h1>Your Mailbox</h1>
 			<div id="mailbox">
+				<!--TRADE MAIL DETAILS-->
 				<div id="click-guard2" data-ng-show="checking">
 					<div id="proposal-checker" class="vert-centered">
 						<h1>Trade</h1>
@@ -77,11 +78,12 @@
 						</div>
 						<div id="trade-buttons">
 							<div class="btn btn-warning" data-ng-click="check()">Close</div>
-							<div class="btn btn-danger" data-ng-if="checking.isProposer" data-ng-click="cancelTrade()">Withdraw</div>
+							<div class="btn btn-danger" data-ng-if="checking.isProposer" data-ng-click="withdrawProposal()">Withdraw</div>
 							<div class="btn btn-success" data-ng-if="!checking.isProposer" data-ng-click="confirmTrade()">Trade</div>
 						</div>
 					</div>
 				</div>
+				<!--TRADE MAIL-->
 				<div id="proposal-list" data-ng-repeat="proposal in pendingProposals">
 					<div data-ng-if="isOwnProposals(proposal)">
 						<div class="proposal-text">
@@ -110,20 +112,45 @@
 		</div>
 	</div>
 	<div data-ng-style="blur()">
-		<h1>Harbour</h1>
+		<div id="harbour">
+			<h1>Harbour</h1>
+			<div class="wrapper-dropdown" data-ng-click="dropdown(3)">
+				<span>{{bulletinMode}}</span>
+			</div>
+			<ul class="dropdown" data-ng-if="dropped(3)">
+				<li data-ng-click="selectItem('All Trades',$index)">All Trades</li>
+				<li data-ng-click="selectItem('My Trades',$index)">My Trades</li>
+			</ul>
+		</div>
 		<div id="bulletin-board">
-			<div class="trade-posting" data-ng-repeat="trade in pendingTrades | noSelfTrade" data-ng-if="pendingTrades.length" data-ng-style="blur()">
-				<div><h3><b>Trading</b> : Level {{trade.tradingOut.level}} {{trade.tradingOut.mon}}</h3></div>
-				<div><h4><b>For </b>: {{trade.wish}}s</h4></div>
-				<b><i>Poster:</i></b>
-				<div class="poster-info">
-					<h5>{{trade.who.file.name}}</h5>
-					<h5>{{trade.who.file.library}}</h5>
+			<!--ALL TRADES-->
+			<div data-ng-if="bulletinMode==='All Trades'">
+				<div class="trade-posting" data-ng-repeat="trade in pendingTrades | noSelfTrade" data-ng-if="pendingTrades.length" data-ng-style="blur()">
+					<div><h3><b>Trading</b> : Level {{trade.tradingOut.level}} {{trade.tradingOut.mon}}</h3></div>
+					<div><h4><b>For </b>: {{trade.wish}}s</h4></div>
+					<b><i>Poster:</i></b>
+					<div class="poster-info">
+						<h5>{{trade.who.file.name}}</h5>
+						<h5>{{trade.who.file.library}}</h5>
+					</div>
+					<div class="btn btn-success" data-ng-click="newWindow('proposal',trade)">Propose Trade</div>
 				</div>
-				<div class="btn btn-default" data-ng-click="newWindow('proposal',trade)">Propose Trade</div>
+				<div data-ng-if="!(pendingTrades | noSelfTrade).length"><i>Aside from yourself, no one seems to be interested in trading books.</i></div>
+			</div>
+			<div data-ng-if="bulletinMode==='My Trades'">
+				<div class="trade-posting" data-ng-repeat="trade in pendingTrades | SelfTrade" data-ng-if="pendingTrades.length" data-ng-style="blur()">
+					<div><h3><b>Trading</b> : Level {{trade.tradingOut.level}} {{trade.tradingOut.mon}}</h3></div>
+					<div><h4><b>For </b>: {{trade.wish}}s</h4></div>
+					<b><i>Poster:</i></b>
+					<div class="poster-info">
+						<h5>{{trade.who.file.name}}</h5>
+						<h5>{{trade.who.file.library}}</h5>
+					</div>
+					<div class="btn btn-danger" data-ng-click="cancelTrade(trade)">Cancel Trade</div>
+				</div>
+				<div data-ng-if="!(pendingTrades | SelfTrade).length"><i>Aside from yourself, no one seems to be interested in trading books.</i></div>
 			</div>
 		</div>
-		<div data-ng-if="!(pendingTrades | noSelfTrade).length"><i>Aside from yourself, no one seems to be interested in trading books.</i></div>
 	</div>
 
 	<div id="footer">
