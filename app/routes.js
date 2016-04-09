@@ -166,7 +166,7 @@ module.exports = function(app) {
 		}
 	});
 	// =====================================
-    // NEW TRADE ========
+    // NEW PROPOSAL ========
     // =====================================
     app.post('/game/trade/propose', function(req, res) {
 		if(req.user){
@@ -202,5 +202,57 @@ module.exports = function(app) {
 			res.redirect('/');
 		}
 	});
-	
+	// =====================================
+    // ENACT TRADE ========
+    // =====================================
+    app.post('/game/trade/do', function(req, res) {
+		if(req.user){
+			var poster = req.body.poster;
+			var proposer = req.body.proposer;
+			//remove all Trades associated with both books
+			Trade.remove({$or: [ { tradingOut: req.body.what._id }, { tradingOut: req.body.for._id } ]},function(err){
+				if(err){
+					throw err;
+				}
+				else{
+					console.log("removed trades for " + req.body.what._id + " and " + req.body.for._id );
+				}
+			});
+			//remove all Proposals associated with both books
+			Proposal.remove({$or: [ { for: req.body.what._id }, { for : req.body.for._id }, { what : req.body.what._id }, { what : req.body.for._id } ]},function(err){
+				if(err){
+					throw err;
+				}
+				else{
+					console.log("removed proposals for " + req.body.what._id + " and " + req.body.for._id );
+				}
+			});
+			
+			//Swap books
+			User.findOneAndUpdate({_id:poster._id},{$pull: {books: {_id: req.body.what._id}}}).exec(function(err,poster){
+
+				//poster gets 'for' book (from proposer);
+				poster.file.books.push(req.body.for._id);
+				poster.file.books.remove(req.body.what._id);
+				poster.save(function(err){
+					if(err)
+						throw err;
+					User.findOneAndUpdate({_id:proposer._id},{$pull: {books: {_id: req.body.for._id}}}).exec(function(err,proposer){
+
+						//proposer gets 'what' book (from poster)
+						proposer.file.books.push(req.body.what._id);
+						proposer.file.books.remove(req.body.for._id);
+						proposer.save(function(err){
+							if(err)
+								throw err;
+							res.send(200);
+						});
+					});
+				});
+			});
+		}
+		else{
+			res.redirect('/');
+		}
+	});	
 };
