@@ -254,5 +254,23 @@ module.exports = function(app) {
 		else{
 			res.redirect('/');
 		}
+	});
+	// =====================================
+    // WITHDRAW PROPOSAL ========
+    // =====================================
+    app.post('/game/trade/withdraw', function(req, res) {
+		if(req.user){
+			Proposal.remove({_id:req.body._id},function(err){
+				if(err){
+					throw err;
+				}
+				else{
+					res.send(200);
+				}
+			});
+		}
+		else{
+			res.redirect('/');
+		}
 	});	
 };
