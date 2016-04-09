@@ -288,13 +288,15 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 			if($scope.isOwnProposals(proposal)){
 				$scope.checking = {
 					mine:proposal.for,
-					theirs:proposal.what
+					theirs:proposal.what,
+					isProposer:true
 				}
 			}
 			else{
 				$scope.checking = {
 					mine:proposal.what,
-					theirs:proposal.for
+					theirs:proposal.for,
+					isProposer:false
 				}
 			}
 		}
@@ -315,7 +317,10 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 				//reset lists
 				$scope.getProposals();
 				$scope.getTrades();
+				//close windows
 				$scope.checking = null;
+				$scope.newWindow('mailbox');
+				alertify.success("The trade has been done.");
 			}).error(function(data){
 				alertify.error("Something went wrong while trading.");
 			})
