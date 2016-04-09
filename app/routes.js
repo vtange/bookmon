@@ -229,7 +229,7 @@ module.exports = function(app) {
 			});
 			
 			//Swap books
-			User.findOneAndUpdate({_id:poster._id},{$pull: {books: {_id: req.body.what._id}}}).exec(function(err,poster){
+			User.findOneAndUpdate({_id:poster._id},{$pull: {"file.books":  req.body.what._id}}).exec(function(err,poster){
 
 				//poster gets 'for' book (from proposer), remove trade proposal
 				poster.file.books.push(req.body.for._id);
@@ -238,7 +238,7 @@ module.exports = function(app) {
 				poster.save(function(err){
 					if(err)
 						throw err;
-					User.findOneAndUpdate({_id:proposer._id},{$pull: {books: {_id: req.body.for._id}}}).exec(function(err,proposer){
+					User.findOneAndUpdate({_id:proposer._id},{$pull: {"file.books": req.body.for._id}}).exec(function(err,proposer){
 
 						//proposer gets 'what' book (from poster), remove trade proposal
 						proposer.file.books.push(req.body.what._id);
