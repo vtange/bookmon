@@ -111,7 +111,7 @@
 	<div data-ng-style="blur()">
 		<h1>Harbour</h1>
 		<div id="bulletin-board">
-			<div class="trade-posting" data-ng-repeat="trade in pendingTrades" data-ng-if="pendingTrades.length" data-ng-style="blur()">
+			<div class="trade-posting" data-ng-repeat="trade in pendingTrades | noSelfTrade" data-ng-if="pendingTrades.length" data-ng-style="blur()">
 				<div><h3><b>Trading</b> : Level {{trade.tradingOut.level}} {{trade.tradingOut.mon}}</h3></div>
 				<div><h4><b>For </b>: {{trade.wish}}s</h4></div>
 				<b><i>Poster:</i></b>
