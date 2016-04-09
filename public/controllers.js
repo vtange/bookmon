@@ -319,8 +319,25 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 				$scope.getTrades();
 				//close windows
 				$scope.checking = null;
-				$scope.newWindow('mailbox');
 				alertify.success("The trade has been done.");
+			}).error(function(data){
+				alertify.error("Something went wrong while trading.");
+			})
+		}
+	};
+	$scope.cancelTrade = function(){
+		if($scope.targetProposal===null){
+			alertify.error("There doesn't seem to be a proposal to withdraw.");
+		}
+		else{
+			$http.post($window.location.href+"/withdraw",$scope.targetProposal).success(function(data){
+				//at server, we will 
+					//find and delete proposal by id
+				//reset lists
+				$scope.getProposals();
+				//close windows
+				$scope.checking = null;
+				alertify.success("The proposal has been withdrawn.");
 			}).error(function(data){
 				alertify.error("Something went wrong while trading.");
 			})
