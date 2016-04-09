@@ -231,17 +231,19 @@ module.exports = function(app) {
 			//Swap books
 			User.findOneAndUpdate({_id:poster._id},{$pull: {books: {_id: req.body.what._id}}}).exec(function(err,poster){
 
-				//poster gets 'for' book (from proposer);
+				//poster gets 'for' book (from proposer), remove trade proposal
 				poster.file.books.push(req.body.for._id);
 				poster.file.books.remove(req.body.what._id);
+				poster.file.pendingTrades.remove(req.body._id);
 				poster.save(function(err){
 					if(err)
 						throw err;
 					User.findOneAndUpdate({_id:proposer._id},{$pull: {books: {_id: req.body.for._id}}}).exec(function(err,proposer){
 
-						//proposer gets 'what' book (from poster)
+						//proposer gets 'what' book (from poster), remove trade proposal
 						proposer.file.books.push(req.body.what._id);
 						proposer.file.books.remove(req.body.for._id);
+						proposer.file.pendingTrades.remove(req.body._id);
 						proposer.save(function(err){
 							if(err)
 								throw err;
@@ -260,6 +262,8 @@ module.exports = function(app) {
     // =====================================
     app.post('/game/trade/withdraw', function(req, res) {
 		if(req.user){
+			console.log(req.body._id);
+			User.update({},{$pull: { "file.pendingTrades" : req.body._id }},{ multi: true }).exec();
 			Proposal.remove({_id:req.body._id},function(err){
 				if(err){
 					throw err;
