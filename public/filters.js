@@ -2,7 +2,9 @@ angular.module('bookmonGame').filter('noSelfTrade', ['ActiveUser', function(Acti
     return function(input) {
         var out = [];
         for (var j = 0; j < input.length; j++) {
-			return ActiveUser.user.file.books.indexOf(input[j]._id)===-1;
+			if(input[j].who._id !== ActiveUser.user._id){
+				out.push(input[j]);
+			};
         }
         return out;
     }
