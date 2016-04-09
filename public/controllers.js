@@ -223,6 +223,7 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 		};
 	};
 	$scope.resetForm();
+	$scope.bulletinMode = "All Trades";
 	$scope.dropdown = function(number){
 		if($scope.currentDrop !== number){
 			$scope.currentDrop = number;
@@ -239,8 +240,11 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 		if(list===1){
 			$scope.outbound.book = $scope.file.books[index];
 		}
-		else{
+		else if (list===2){
 			$scope.outbound.wish = $scope.possibleBooks[index];
+		}
+		else{
+			$scope.bulletinMode = list;
 		}
 	};
 	$scope.possibleBooks = ["Comic","Novel","Journal","Textbook","Artbook","Scripture"];
@@ -325,7 +329,7 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 			})
 		}
 	};
-	$scope.cancelTrade = function(){
+	$scope.withdrawProposal = function(){
 		if($scope.targetProposal===null){
 			alertify.error("There doesn't seem to be a proposal to withdraw.");
 		}
@@ -342,5 +346,23 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 				alertify.error("Something went wrong while trading.");
 			})
 		}
+	};
+	$scope.cancelTrade = function(trade){
+		alertify.okBtn("Yes").cancelBtn("No").confirm("Are you sure you want to remove this trade posting?", function (ev) {
+			ev.preventDefault();
+			$http.post($window.location.href+"/cancel",trade).success(function(data){
+				//at server, we will 
+					//find and delete trade by id
+				//reset lists
+				$scope.getTrades();
+				alertify.success("The trade has been canceled.");
+			}).error(function(data){
+				alertify.error("Something went wrong while canceling the trade.");
+			});
+
+		}, function(ev) {
+			  ev.preventDefault();
+			//nothing happens
+		});
 	};
 }]);

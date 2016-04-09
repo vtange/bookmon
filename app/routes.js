@@ -262,7 +262,6 @@ module.exports = function(app) {
     // =====================================
     app.post('/game/trade/withdraw', function(req, res) {
 		if(req.user){
-			console.log(req.body._id);
 			User.update({},{$pull: { "file.pendingTrades" : req.body._id }},{ multi: true }).exec();
 			Proposal.remove({_id:req.body._id},function(err){
 				if(err){
@@ -276,5 +275,23 @@ module.exports = function(app) {
 		else{
 			res.redirect('/');
 		}
-	});	
+	});
+	// =====================================
+    // CANCEL TRADE ========
+    // =====================================
+    app.post('/game/trade/cancel', function(req, res) {
+		if(req.user){
+			Trade.remove({_id:req.body._id},function(err){
+				if(err){
+					throw err;
+				}
+				else{
+					res.send(200);
+				}
+			});
+		}
+		else{
+			res.redirect('/');
+		}
+	});
 };
