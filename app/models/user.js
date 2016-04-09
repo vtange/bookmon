@@ -17,7 +17,7 @@ var userSchema = mongoose.Schema({
     },
 	file			 : {
 		name		 : String,
-		library		 : String,
+		town		 : String,
 		books		 : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
 		pendingTrades: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Proposal' }]
 	}
