@@ -263,6 +263,7 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 	$scope.sendProposal= function(){
 		$http.post($window.location.href+"/propose",$scope.outbound).success(function(data){
 			$scope.newWindow('proposal');
+			$scope.getProposals();
 			alertify.success("You made a trade proposal.");
 		}).error(function(data){
 			alertify.error("Something went wrong sending your proposal.");
