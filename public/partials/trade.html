@@ -122,7 +122,7 @@
 				<div class="btn btn-default" data-ng-click="newWindow('proposal',trade)">Propose Trade</div>
 			</div>
 		</div>
-		<div data-ng-if="!pendingTrades.length"><i>Aside from yourself, no one seems to be interested in trading books.</i></div>
+		<div data-ng-if="!(pendingTrades | noSelfTrade).length"><i>Aside from yourself, no one seems to be interested in trading books.</i></div>
 	</div>
 
 	<div id="footer">
