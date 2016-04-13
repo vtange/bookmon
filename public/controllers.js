@@ -24,7 +24,7 @@ angular.module('bookmonGame').controller('startMenuController',['$scope', 'Activ
 /*-------------*/
 /*New Game Create    */
 /*-------------*/
-angular.module('bookmonGame').controller('newGameController',['$scope', '$http', '$window', 'ActiveUser',function ($scope, $http, $window, ActiveUser) {
+angular.module('bookmonGame').controller('newGameController',['$scope', '$http', '$window', 'alertify', 'ActiveUser',function ($scope, $http, $window, alertify, ActiveUser) {
 	//object for ng-model
 	$scope.newFile = {};
 	//assign ^ to user in MongoDB and start the game
@@ -32,7 +32,7 @@ angular.module('bookmonGame').controller('newGameController',['$scope', '$http',
 		$http.post($window.location.href,$scope.newFile).success(function(data){
 			$window.location.href = '/game/library';
 		}).error(function(data){
-			console.error("Something wrong happened while making your new game.");
+			alertify.error("Something broke while setting up your new game.");
 		});
 	};
 	
@@ -178,7 +178,7 @@ angular.module('bookmonGame').controller('tradeController',['$scope', '$http', '
 		$http.post($window.location.href+"/proposals").success(function(data){
 			$scope.pendingProposals = data[0];
 		}).error(function(err){
-			throw "error getting trade data";
+			throw "error getting proposal data";
 		});
 	};
 	$scope.getProposals();
