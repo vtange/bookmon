@@ -62,6 +62,63 @@ $scope.setHP = function(hp,max){
 ```
  - Custom Dropdown (with arrows too!)
 ```
+//HTML
+<div class="wrapper-dropdown" data-ng-click="dropdown(3)">
+	<span>{{bulletinMode}}</span>
+</div>
+<ul class="dropdown" data-ng-if="dropped(3)">
+	<li data-ng-click="selectItem('All Trades',$index)">All Trades</li>
+	<li data-ng-click="selectItem('My Trades',$index)">My Trades</li>
+</ul>
+//CSS
+/*------------*/
+/* CUSTOM DROPDOWN */
+/*--------------*/
+.wrapper-dropdown, .dropdown {
+    /* Size and position */
+    position: relative; /* Enable absolute positioning for children and pseudo elements */
+    width: 200px;
+    padding: 10px;
+	border: 2px solid #654b26;
+	border-radius: 10px;
+
+    /* Styles */
+    background: beige;
+    color: #654b26;
+    outline: none;
+    cursor: pointer;
+
+    /* Font settings */
+    font-weight: bold;
+}
+/* Down Arrow */
+.wrapper-dropdown:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    margin-top: -6px;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: #654b26 transparent;    
+}
+/* The Actual List */
+.dropdown{
+	position: absolute;
+	z-index: 10;
+}
+.dropdown li{
+	display: block;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	border-bottom: 2px dotted #654b26;
+}
+.dropdown li:hover{
+   	border-bottom: 2px solid #654b26;
+}
+
 ```
 
 #### JS
