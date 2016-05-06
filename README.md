@@ -27,6 +27,38 @@ Mix Express + Angular routing (not really a good thing), RPG-theme(Hp-bars, Mail
 #### CSS
  - Hp-bar
 ```
+//HTML
+<div class="hp-bar-red"><div class="hp-value">{{book.hp}}/{{book.maxhp}}</div><div class="hp-bar-green" data-ng-style="setHP(book.hp,book.maxhp)"></div></div>
+
+//CSS
+.hp-bar-red{
+	position: relative;
+	background-color:lightcoral;
+	border-radius: 10px;
+}
+.hp-bar-green{
+	transition:all 0.3s ease;
+	position: absolute;
+	content:"";
+	top:0;
+	right:0;
+	background-color:lightgreen;
+	border-radius: 10px;
+	height:100%;
+	width:100%;
+}
+.hp-value{
+	position: relative;
+	z-index: 2;
+	
+	font-weight: bold;
+}
+
+//JS
+$scope.setHP = function(hp,max){
+	var percent = Math.floor((hp/max)*100);
+	return { "width" : percent+"%" };
+};
 ```
  - Custom Dropdown (with arrows too!)
 ```
