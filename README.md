@@ -1,5 +1,6 @@
 ![](http://res.cloudinary.com/dmj8qtant/image/upload/c_scale,w_600/v1461261954/egjehu0yamywhk8ke0wa.png)
 # bookmon
+Client creates Game account which manages Books and Trades.
 
 ## Tech
 Express, EJS, MongoDB, AngularJS + ui-router + ngAlertify, ```Q``` module
